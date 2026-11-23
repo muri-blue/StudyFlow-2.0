@@ -1,0 +1,525 @@
+/* =========================================================
+   StudyFlow — mascote.css
+   (também usado por loja, conquistas, perfil e configurações)
+   ========================================================= */
+
+/* Sequência de dias */
+.sequencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--laranja);
+  background: var(--laranja-suave);
+  color: var(--laranja-forte);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sequencia [data-icone] {
+  color: var(--laranja);
+}
+
+/* ---------- Cartão principal ---------- */
+.mascote-cartao {
+  padding: 24px 23px 23px;
+}
+
+.mascote-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.palco {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 320px;
+  border-radius: var(--raio-g);
+  background: transparent;
+  cursor: pointer;
+}
+
+.palco:focus-visible {
+  outline-offset: -2px;
+}
+
+.mascote {
+  width: 100%;
+  max-width: 290px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  transition: transform 0.25s ease;
+}
+
+.mascote svg {
+  width: 100%;
+  height: 100%;
+}
+
+.palco:hover .mascote {
+  transform: scale(1.02);
+}
+
+
+@keyframes mascote-pulo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-10px) scale(1.03);
+  }
+  65% {
+    transform: translateY(2px) scale(0.99);
+  }
+}
+
+/* Corações que sobem ao fazer carinho */
+.coracao,
+.mascote__coracao {
+  position: absolute;
+  pointer-events: none;
+  color: #f43f5e;
+  font-size: 20px;
+  animation: coracao-subir 1s ease forwards;
+}
+
+@keyframes coracao-subir {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.2);
+  }
+}
+
+/* ---------- Bem-estar ---------- */
+.bem-estar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bem-estar__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.barra__rotulo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texto-2);
+}
+
+.barra__valor {
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.barra__trilho {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--borda);
+  overflow: hidden;
+}
+
+.barra__trilho--grande {
+  height: 10px;
+}
+
+.barra__preenchido {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--primaria);
+  transition: width 0.5s ease;
+}
+
+.barra__preenchido--felicidade {
+  background: var(--laranja);
+}
+
+.barra__preenchido--energia {
+  background: var(--verde);
+}
+
+.barra__preenchido--sabedoria {
+  background: var(--roxo);
+}
+
+.barra--baixa .barra__valor {
+  color: var(--vermelho);
+}
+
+.bem-estar__texto {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texto-3);
+}
+
+/* ---------- Conquistas recentes ---------- */
+.conquistas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.conquistas > li,
+.conquista-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 10px 11px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: var(--superficie);
+  min-width: 0;
+}
+
+.conquistas > li.vazio {
+  grid-column: 1 / -1;
+  justify-content: center;
+  color: var(--texto-suave);
+  font-size: 13px;
+  border-style: dashed;
+}
+
+.conquistas > li > div,
+.conquista-mini__texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.conquistas strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conquistas > li > div span,
+.conquista-mini__texto span {
+  font-size: 11px;
+  color: var(--texto-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Ícone colorido (36px) — usado em conquistas, opções e lojas */
+.icone-caixa,
+.conquistas > li > [data-icone],
+.conquista-mini__icone {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.icone-caixa--laranja,
+.icone--laranja,
+.conquistas [data-cor="laranja"] {
+  background: var(--laranja-suave);
+  color: var(--laranja);
+}
+
+.icone-caixa--azul,
+.icone--azul,
+.conquistas [data-cor="azul"] {
+  background: var(--azul-suave);
+  color: var(--azul);
+}
+
+.icone-caixa--verde,
+.icone--verde,
+.conquistas [data-cor="verde"] {
+  background: var(--verde-suave);
+  color: var(--verde);
+}
+
+.icone-caixa--roxo,
+.icone--roxo,
+.conquistas [data-cor="roxo"] {
+  background: var(--roxo-suave);
+  color: var(--roxo);
+}
+
+.icone-caixa--vermelho,
+.icone--vermelho,
+.conquistas [data-cor="vermelho"] {
+  background: var(--vermelho-suave);
+  color: var(--vermelho);
+}
+
+/* ---------- Moedas ---------- */
+.moedas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px 14px;
+}
+
+.moedas .painel__titulo {
+  margin: 0 !important;
+}
+
+.moedas__valor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--laranja);
+}
+
+.moedas__valor.ganhou {
+  animation: moedas-pulso 0.5s ease;
+}
+
+@keyframes moedas-pulso {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* ---------- Skills / Vestiário ---------- */
+.lista-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opcao {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 53px;
+  padding: 8px 10px 8px 11px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: var(--superficie-2);
+  text-align: left;
+  transition: border-color var(--transicao), background var(--transicao), transform var(--transicao);
+}
+
+button.opcao:hover:not(:disabled) {
+  border-color: var(--primaria-borda);
+  background: var(--superficie);
+}
+
+button.opcao:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.lista-opcoes--vestiario .opcao {
+  min-height: 56px;
+}
+
+.opcao__icone {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.opcao__icone--laranja {
+  background: var(--laranja-suave);
+  color: var(--laranja-forte);
+}
+
+.opcao__icone--verde {
+  background: var(--verde-suave);
+  color: var(--verde-forte);
+}
+
+.opcao__icone--roxo {
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.opcao__icone--azul {
+  background: var(--azul-suave);
+  color: var(--azul);
+}
+
+.opcao__texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.opcao__texto strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.opcao__texto span {
+  font-size: 11px;
+  color: var(--texto-3);
+}
+
+/* Etiquetas (preço / estado) */
+.etiqueta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.etiqueta--laranja {
+  background: var(--laranja-suave);
+  color: var(--laranja-forte);
+}
+
+.etiqueta--azul {
+  background: var(--azul-suave);
+  color: #2563eb;
+}
+
+.etiqueta--verde {
+  background: var(--verde-suave);
+  color: var(--verde);
+}
+
+.etiqueta--cinza {
+  background: var(--borda);
+  color: var(--texto-3);
+}
+
+/* "Equipado" no vestiário: só texto verde */
+.etiqueta--equipado,
+.lista-opcoes--vestiario .etiqueta--verde {
+  background: var(--verde-suave);
+}
+
+/* Link para a loja */
+.link-loja {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primaria);
+}
+
+.link-loja:hover {
+  text-decoration: underline;
+}
+
+.link-loja--inline {
+  margin: 0;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1100px) {
+  .mascote-topo {
+    grid-template-columns: 1fr;
+  }
+
+  .palco {
+    min-height: 240px;
+  }
+
+  .mascote {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 760px) {
+  .conquistas {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Ajustes para o JS ---------- */
+.palco {
+  position: relative;
+  overflow: hidden;
+}
+
+.coracao {
+  display: block;
+  line-height: 0;
+}
+
+.coracao svg {
+  fill: currentColor;
+}
+
+/* Idebinha pisca de vez em quando */
+.idebinha__olhos {
+  transform-origin: 100px 72px;
+  animation: idebinha-piscar 5s infinite;
+}
+
+@keyframes idebinha-piscar {
+  0%,
+  94%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+.mascote .idebinha {
+  overflow: visible;
+}
+
+.lista-opcoes > li.vazio {
+  padding: 14px;
+  border: 1px dashed var(--borda);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.opcao[aria-pressed="true"] {
+  background: var(--superficie);
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Autorização dos responsáveis</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/legal.css" />
+  </head>
+  <body>
+    <div class="legal__faixa" aria-hidden="true"></div>
+    <main class="legal">
+      <header class="legal__topo">
+        <img src="assets/brasao.webp" alt="" width="36" height="56" />
+        <div><small>Prefeitura Municipal de Santa Rosa do Sul</small><strong>Secretaria Municipal de Educação</strong></div>
+        <a class="legal__voltar" href="index.html" onclick="if (history.length > 1) { history.back(); return false; }">← Voltar</a>
+      </header>
+
+      <h1>Termo de ciência e autorização dos pais ou responsáveis</h1>
+      <p class="legal__versao">Plataforma de estudos StudyFlow — versão 1, novembro de 2026</p>
+
+      <p class="rascunho nao-imprimir"><strong>Modelo para revisão jurídica.</strong> A escola imprime uma via por aluno, entrega aos responsáveis e arquiva a via assinada. Os trechos <span class="preencher">em amarelo</span> devem ser preenchidos pela Prefeitura antes de imprimir.</p>
+
+      <p class="nao-imprimir"><button type="button" class="botao-imprimir" onclick="window.print()">Imprimir</button></p>
+
+      <section class="campos">
+        <p>Eu, <span class="linha-preencher"></span>, portador(a) do documento nº <span class="linha-preencher linha-preencher--curta"></span>, responsável legal pelo(a) aluno(a) <span class="linha-preencher"></span>, matrícula nº <span class="linha-preencher linha-preencher--curta"></span>, da escola <span class="linha-preencher"></span>, turma <span class="linha-preencher linha-preencher--curta"></span>, declaro que:</p>
+      </section>
+
+      <ol>
+        <li>Fui informado(a) de que o <strong>StudyFlow</strong> é uma plataforma de estudos gratuita oferecida pela Prefeitura Municipal de Santa Rosa do Sul aos alunos da rede municipal, com calendário escolar, planos de estudo, cronômetro de foco, assistente de estudos e a mascote Idebinha.</li>
+        <li>Tive acesso aos <strong>Termos de Uso</strong> e à <strong>Política de Privacidade</strong> do StudyFlow (disponíveis em <span class="preencher">[endereço do site]</span>/termos.html e /privacidade.html, ou em versão impressa na escola).</li>
+        <li>Sei que o StudyFlow usa apenas os dados escolares e de uso necessários para os estudos (nome, matrícula, escola, turma, atividades e progresso), <strong>sem publicidade</strong> e sem venda ou compartilhamento comercial de dados, conforme a Lei nº 13.709/2018 (LGPD) e o Estatuto da Criança e do Adolescente.</li>
+        <li>Sei que posso, a qualquer momento, pedir para ver, corrigir, baixar ou apagar os dados do(a) aluno(a), pela secretaria da escola ou pelo Encarregado de Dados da Prefeitura (<span class="preencher">[nome, e-mail e telefone]</span>).</li>
+      </ol>
+
+      <h2>Autorizações</h2>
+      <p><span class="caixa"></span><strong>Autorizo</strong> &nbsp; <span class="caixa"></span><strong>Não autorizo</strong> — o uso da plataforma StudyFlow pelo(a) aluno(a).</p>
+      <p><span class="caixa"></span><strong>Autorizo</strong> &nbsp; <span class="caixa"></span><strong>Não autorizo</strong> — o uso do <strong>Assistente de estudos com inteligência artificial</strong>, quando ele estiver disponível. As perguntas são enviadas ao serviço de IA apenas para gerar a resposta, sem o nome do(a) aluno(a). Se não autorizar, o(a) aluno(a) usa todas as outras funções normalmente.</p>
+      <p>Esta autorização pode ser revogada a qualquer momento, por escrito, na secretaria da escola.</p>
+
+      <p style="margin-top: 28px">Santa Rosa do Sul, ______ de ________________________ de ________.</p>
+
+      <div class="assinatura">
+        <div>Assinatura do(a) responsável</div>
+        <div>Recebido pela escola (nome e assinatura)</div>
+      </div>
+
+      <footer class="legal__rodape nao-imprimir">
+        <a href="termos.html">Termos de Uso</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </footer>
+    </main>
+  </body>
+</html>

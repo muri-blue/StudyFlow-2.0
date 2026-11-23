@@ -1,0 +1,120 @@
+/* =========================================================
+   StudyFlow — celular.css
+   Ajustes para telas de toque (celular e tablet).
+   Carregado por último em todas as páginas.
+
+   Regra: tudo o que se toca tem pelo menos 44 × 44 px
+   (recomendação de acessibilidade da Apple e do WCAG 2.5.5).
+   Os dias do calendário ficam de fora: a largura vem das
+   7 colunas, e a altura (69 px) já compensa.
+   ========================================================= */
+
+@media (max-width: 760px), (pointer: coarse) {
+  /* ---------- Botões ---------- */
+  .botao-primario,
+  .botao-secundario,
+  .botao-perigo,
+  .pilula,
+  .segmentado__opcao,
+  .categoria,
+  .sugestao,
+  .conquista__resgatar,
+  .anexo__abrir,
+  .sidebar__marca {
+    min-height: 44px;
+  }
+
+  .botao-icone,
+  .botao-icone--pequeno,
+  .botao-quadrado,
+  .chat__enviar,
+  .chat__anexo,
+  .ganhar__ir,
+  .sidebar__config {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* "x" que apaga conversa no histórico do Assistente */
+  .historico > li > .historico__remover {
+    width: 40px;
+    height: 40px;
+    top: 0;
+  }
+
+  .historico > li > button:first-child {
+    padding-right: 44px;
+  }
+
+  .chip {
+    min-height: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* ---------- Campos ---------- */
+  /* 16 px evita o zoom automático do iPhone ao tocar no campo */
+  .entrada,
+  select,
+  input[type="text"],
+  input[type="search"],
+  input[type="password"],
+  input[type="date"],
+  input[type="time"],
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  /* Interruptores (Configurações): área de toque maior, mesmo desenho */
+  .chave {
+    padding: 10px 0;
+  }
+
+  /* ---------- Links de texto: área de toque invisível maior ---------- */
+  .voltar,
+  .link-acao,
+  .link-loja--inline,
+  .login__esqueceu {
+    position: relative;
+  }
+
+  .voltar::after,
+  .link-acao::after,
+  .link-loja--inline::after,
+  .login__esqueceu::after {
+    content: "";
+    position: absolute;
+    inset: -13px -10px;
+  }
+
+  .link-loja:not(.link-loja--inline) {
+    min-height: 44px;
+    margin-top: 10px;
+  }
+
+  /* ---------- Janelas (modais) ---------- */
+  .modal {
+    /* dvh = altura real visível (desconta a barra de endereço do celular) */
+    max-height: calc(100dvh - 32px);
+    overscroll-behavior: contain;
+  }
+}
+
+/* Só no celular */
+@media (max-width: 760px) {
+  /* Janela ocupa a largura toda e os botões de ação ficam fáceis de alcançar */
+  .modal,
+  .modal--largo {
+    width: calc(100vw - 24px);
+  }
+
+  .modal__acoes {
+    flex-wrap: wrap;
+  }
+
+  .modal__acoes > * {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}

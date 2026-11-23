@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Meu perfil</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/mascote.css" />
+    <link rel="stylesheet" href="css/loja.css" />
+    <link rel="stylesheet" href="css/conquistas.css" />
+    <link rel="stylesheet" href="css/perfil.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 class="pagina__titulo">Meu perfil</h1>
+            <p class="pagina__subtitulo">Seus dados e o seu progresso no StudyFlow</p>
+          </div>
+          <a class="botao-secundario botao-com-icone" href="configuracoes.html"><span data-icone="settings" data-tamanho="16"></span>Configurações</a>
+        </header>
+
+        <section class="cartao perfil" aria-label="Dados do perfil">
+          <div class="perfil__capa"></div>
+          <div class="perfil__corpo">
+            <span id="perfil-avatar" class="perfil__avatar" aria-hidden="true"></span>
+            <div class="perfil__dados">
+              <h2 id="perfil-nome" class="perfil__nome"></h2>
+              <p id="perfil-detalhe" class="perfil__detalhe"></p>
+            </div>
+            <button id="btn-editar" type="button" class="botao-secundario botao-com-icone"><span data-icone="pencil" data-tamanho="15"></span>Editar perfil</button>
+          </div>
+
+          <form id="form-perfil" class="perfil__form" hidden>
+            <label class="rotulo">
+              Como você quer ser chamado(a)?
+              <input id="campo-apelido" class="entrada" type="text" maxlength="30" placeholder="Seu nome ou apelido" />
+            </label>
+            <fieldset class="perfil__cores">
+              <legend>Cor do avatar</legend>
+              <div id="opcoes-cor" class="cores"></div>
+            </fieldset>
+            <div class="modal__acoes">
+              <button id="btn-cancelar" type="button" class="botao-secundario">Cancelar</button>
+              <button type="submit" class="botao-primario">Salvar</button>
+            </div>
+          </form>
+
+          <dl class="perfil__info">
+            <div><dt>Matrícula</dt><dd id="info-matricula"></dd></div>
+            <div><dt>Tipo de conta</dt><dd id="info-papel"></dd></div>
+            <div><dt>Escola</dt><dd id="info-escola">Ainda não vinculada</dd></div>
+            <div><dt>Turma</dt><dd id="info-turma">Ainda não vinculada</dd></div>
+          </dl>
+        </section>
+
+        <h2 class="secao__titulo secao__titulo--fora">Seu progresso</h2>
+        <ul id="estatisticas" class="estatisticas"></ul>
+
+        <div class="secao__topo secao__topo--fora">
+          <h2 class="secao__titulo">Conquistas recentes</h2>
+          <a class="link-acao" href="conquistas.html">Ver todas</a>
+        </div>
+        <ul id="perfil-conquistas" class="lista-conquistas"></ul>
+      </main>
+
+      <aside class="lateral">
+        <section class="cartao painel perfil-idebinha" aria-labelledby="idebinha-titulo">
+          <h2 id="idebinha-titulo" class="painel__titulo">Sua Idebinha</h2>
+          <a href="mascote.html" class="perfil-idebinha__palco" aria-label="Ir para a Idebinha"></a>
+          <p id="idebinha-nivel" class="perfil-idebinha__nivel"></p>
+          <div class="perfil-idebinha__acoes">
+            <a class="botao-secundario botao-com-icone" href="loja.html"><span data-icone="cart" data-tamanho="15"></span>Loja</a>
+            <a class="botao-secundario botao-com-icone" href="mascote.html"><span data-icone="heart" data-tamanho="15"></span>Cuidar</a>
+          </div>
+        </section>
+
+        <section class="cartao painel" aria-labelledby="atalhos-titulo">
+          <h2 id="atalhos-titulo" class="painel__titulo">Acesso rápido</h2>
+          <ul class="atalhos">
+            <li><a href="configuracoes.html"><span data-icone="settings" data-tamanho="16"></span>Configurações</a></li>
+            <li><a href="conquistas.html"><span data-icone="trophy" data-tamanho="16"></span>Conquistas</a></li>            <li><button id="btn-sair" type="button" class="atalhos__sair"><span data-icone="logout" data-tamanho="16"></span>Sair da conta</button></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/idebinha.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/perfil.js"></script>
+  </body>
+</html>

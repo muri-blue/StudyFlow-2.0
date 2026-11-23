@@ -1,0 +1,283 @@
+/* =========================================================
+   StudyFlow — ranking.css
+   ========================================================= */
+
+/* Sua posição */
+.ranking__voce:empty {
+  display: none;
+}
+
+.ranking__voce {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--primaria);
+  color: #fff;
+}
+
+:root[data-tema="escuro"] .ranking__voce {
+  color: #0b1120;
+}
+
+.ranking__voce--neutro {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+}
+
+:root[data-tema="escuro"] .ranking__voce--neutro {
+  color: var(--texto-2);
+}
+
+.ranking__voce-pos {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  font-family: var(--fonte-titulo);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ranking__voce strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+}
+
+.ranking__voce span {
+  font-size: 14px;
+  opacity: 0.92;
+}
+
+.ranking__voce a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Pódio */
+.podio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.podio__lugar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.podio__medalha {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-size: 22px;
+  font-weight: 700;
+  color: #3f2a00;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.12), 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+.podio__lugar--1 .podio__medalha {
+  width: 66px;
+  height: 66px;
+  font-size: 26px;
+  background: linear-gradient(145deg, #fde68a, #f59e0b);
+}
+
+.podio__lugar--2 .podio__medalha {
+  background: linear-gradient(145deg, #f1f5f9, #94a3b8);
+  color: #1e293b;
+}
+
+.podio__lugar--3 .podio__medalha {
+  background: linear-gradient(145deg, #fed7aa, #c2793d);
+  color: #3b1d06;
+}
+
+.podio__nome {
+  max-width: 100%;
+  font-weight: 700;
+  color: var(--texto);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.podio__base {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 14px 14px 6px 6px;
+  background: var(--primaria-suave);
+  border: 1px solid var(--primaria-borda);
+  color: var(--primaria);
+  font-weight: 700;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.podio__lugar--1 .podio__base { height: 86px; }
+.podio__lugar--2 .podio__base { height: 62px; }
+.podio__lugar--3 .podio__base { height: 46px; }
+
+.podio__lugar.eu .podio__nome::after {
+  content: " (você)";
+  color: var(--primaria);
+}
+
+/* Lista do 4º em diante */
+.ranking__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ranking__lista li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-2);
+}
+
+.ranking__lista li.eu {
+  border-color: var(--primaria);
+  background: var(--primaria-suave);
+}
+
+.ranking__lista li.separador {
+  justify-content: center;
+  min-height: 0;
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: var(--texto-3);
+  letter-spacing: 0.3em;
+}
+
+.ranking__pos {
+  flex: 0 0 36px;
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--texto-3);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking__quem {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking__quem strong {
+  font-size: 14px;
+  color: var(--texto);
+}
+
+.ranking__quem span {
+  font-size: 12px;
+  color: var(--texto-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ranking__pontos {
+  font-weight: 700;
+  color: var(--texto);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ranking__pontos small {
+  font-weight: 500;
+  color: var(--texto-3);
+}
+
+/* Como ganhar pontos / regras */
+.ranking__como,
+.ranking__regras {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--texto-2);
+}
+
+.ranking__como li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+}
+
+.ranking__como b {
+  color: var(--primaria);
+  white-space: nowrap;
+}
+
+.ranking__regras {
+  padding-left: 18px;
+  list-style: disc;
+  line-height: 1.5;
+}
+
+.ranking__regras a {
+  color: var(--primaria);
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .podio {
+    gap: 6px;
+  }
+
+  .podio__medalha {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .podio__lugar--1 .podio__medalha {
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+  }
+
+  .ranking__voce-pos {
+    width: 54px;
+    height: 54px;
+    font-size: 20px;
+  }
+}

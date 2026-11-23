@@ -1,0 +1,1052 @@
+/* =========================================================
+   StudyFlow — animacoes.css
+   Movimento de toda a aplicação, num lugar só.
+   Tudo aqui é desligado por "Reduzir animações" (Configurações)
+   e pelo modo "reduzir movimento" do sistema.
+   ========================================================= */
+
+:root {
+  --ease-saida: cubic-bezier(0.22, 1, 0.36, 1); /* desacelera suave */
+  --ease-mola: cubic-bezier(0.34, 1.56, 0.64, 1); /* passa um pouquinho e volta */
+  --ease-entra-sai: cubic-bezier(0.65, 0, 0.35, 1);
+  --rapido: 0.16s;
+  --medio: 0.28s;
+  --lento: 0.5s;
+}
+
+/* =========================================================
+   Troca de página (navegadores com View Transitions)
+   ========================================================= */
+@view-transition {
+  navigation: auto;
+}
+
+.sidebar {
+  view-transition-name: sidebar;
+}
+
+::view-transition-old(root) {
+  animation: vt-sair 0.14s var(--ease-entra-sai) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-entrar 0.32s var(--ease-saida) both;
+}
+
+::view-transition-group(sidebar) {
+  animation-duration: 0s;
+}
+
+@keyframes vt-sair {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* =========================================================
+   Entrada da página
+   ========================================================= */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes surgir-lado {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes escala-entrar {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.principal > *,
+.lateral > * {
+  animation: surgir var(--lento) var(--ease-saida) both;
+}
+
+.lateral > * {
+  animation-name: surgir-lado;
+}
+
+.principal > :nth-child(2),
+.lateral > :nth-child(1) {
+  animation-delay: 0.05s;
+}
+.principal > :nth-child(3),
+.lateral > :nth-child(2) {
+  animation-delay: 0.1s;
+}
+.principal > :nth-child(4),
+.lateral > :nth-child(3) {
+  animation-delay: 0.15s;
+}
+.principal > :nth-child(5),
+.lateral > :nth-child(4) {
+  animation-delay: 0.2s;
+}
+.principal > :nth-child(n + 6) {
+  animation-delay: 0.25s;
+}
+
+/* Itens de listas entram em cascata só na abertura da página
+   (o layout.js marca o <body> com .entrando por um instante) */
+.entrando :is(
+    .grade > *,
+    .plano__dias > *,
+    .planos > *,
+    .vitrine > *,
+    .lista-conquistas > li,
+    .conquistas > li,
+    .estatisticas > li,
+    .agenda__lista > li,
+    .metas > li,
+    .lista-opcoes > li,
+    .sugestoes > li,
+    .historico > li,
+    .chat__mensagens > *,
+    .config > *
+  ) {
+  animation: surgir 0.45s var(--ease-saida) both;
+}
+
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(1) { animation-delay: 0.08s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(2) { animation-delay: 0.1s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(3) { animation-delay: 0.12s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(4) { animation-delay: 0.14s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(5) { animation-delay: 0.16s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(6) { animation-delay: 0.18s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(7) { animation-delay: 0.2s; }
+.entrando :is(.grade, .vitrine, .lista-conquistas, .estatisticas, .plano__dias, .config) > :nth-child(n + 8) { animation-delay: 0.22s; }
+
+/* Na grade do calendário a cascata segue as semanas */
+.entrando .grade > :nth-child(n + 8) { animation-delay: 0.16s; }
+.entrando .grade > :nth-child(n + 15) { animation-delay: 0.22s; }
+.entrando .grade > :nth-child(n + 22) { animation-delay: 0.28s; }
+.entrando .grade > :nth-child(n + 29) { animation-delay: 0.34s; }
+.entrando .grade > :nth-child(n + 36) { animation-delay: 0.4s; }
+
+.entrando :is(.metas, .agenda__lista, .lista-opcoes, .sugestoes, .historico, .planos, .conquistas) > :nth-child(1) { animation-delay: 0.12s; }
+.entrando :is(.metas, .agenda__lista, .lista-opcoes, .sugestoes, .historico, .planos, .conquistas) > :nth-child(2) { animation-delay: 0.17s; }
+.entrando :is(.metas, .agenda__lista, .lista-opcoes, .sugestoes, .historico, .planos, .conquistas) > :nth-child(3) { animation-delay: 0.22s; }
+.entrando :is(.metas, .agenda__lista, .lista-opcoes, .sugestoes, .historico, .planos, .conquistas) > :nth-child(n + 4) { animation-delay: 0.27s; }
+
+/* Barras enchem ao abrir a página */
+@keyframes encher {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.entrando :is(.barra__preenchido, .progresso__preenchido) {
+  transform-origin: left center;
+  animation: encher 0.9s 0.2s var(--ease-saida) both;
+}
+
+/* =========================================================
+   Sidebar
+   ========================================================= */
+.sidebar__nav a {
+  position: relative;
+  transition:
+    background var(--medio) var(--ease-saida),
+    border-color var(--medio) var(--ease-saida),
+    color var(--medio) var(--ease-saida),
+    transform var(--rapido) var(--ease-saida);
+}
+
+.sidebar__nav a [data-icone] {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.sidebar__nav a:hover [data-icone] {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.sidebar__nav a:active {
+  transform: scale(0.98);
+}
+
+/* Tracinho que marca a página atual */
+.sidebar__nav a::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  border-radius: 0 3px 3px 0;
+  background: var(--primaria);
+  transform: translateY(-50%);
+  transition: height var(--medio) var(--ease-mola);
+}
+
+.sidebar__nav a.ativo::before {
+  height: 18px;
+}
+
+/* No celular (barra inferior) o tracinho fica em cima do item */
+@media (max-width: 760px) {
+  .sidebar__nav a::before {
+    left: 50%;
+    top: -7px;
+    width: 0;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    transform: translateX(-50%);
+    transition: width var(--medio) var(--ease-mola);
+  }
+
+  .sidebar__nav a.ativo::before {
+    width: 24px;
+    height: 3px;
+  }
+
+  .sidebar__nav a:hover [data-icone] {
+    transform: none; /* no toque, o "hover" ficaria preso */
+  }
+
+  .sidebar__nav a:active [data-icone] {
+    transform: scale(0.9);
+  }
+
+  ::view-transition-group(navegacao) {
+    animation-duration: 0s;
+  }
+}
+
+.sidebar__logo {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.sidebar__marca:hover .sidebar__logo {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.sidebar__config [data-icone] {
+  transition: transform 0.6s var(--ease-saida);
+}
+
+.sidebar__config:hover [data-icone] {
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   Botões e controles
+   ========================================================= */
+.botao-primario,
+.botao-secundario,
+.botao-perigo,
+.botao-quadrado,
+.botao-icone,
+.pilula,
+.chip,
+.categoria,
+.segmentado__opcao,
+.chat__enviar,
+.anexo__abrir,
+.login__botao {
+  transition:
+    background-color var(--medio) var(--ease-saida),
+    border-color var(--medio) var(--ease-saida),
+    color var(--medio) var(--ease-saida),
+    box-shadow var(--medio) var(--ease-saida),
+    transform var(--rapido) var(--ease-saida);
+}
+
+.botao-primario:hover:not(:disabled),
+.botao-quadrado:hover,
+.chat__enviar:hover:not(:disabled),
+.login__botao:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+:is(.botao-primario, .botao-secundario, .botao-perigo, .botao-quadrado, .botao-icone, .pilula, .chip, .categoria, .segmentado__opcao, .chat__enviar, .anexo__abrir, .login__botao, .sugestao, .opcao):active:not(:disabled) {
+  transform: scale(0.96);
+  transition-duration: 0.06s;
+}
+
+.botao-quadrado [data-icone] {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.botao-quadrado:hover [data-icone] {
+  transform: rotate(90deg);
+}
+
+.chat__enviar:hover:not(:disabled) [data-icone] {
+  animation: enviar-pulo 0.5s var(--ease-mola);
+}
+
+@keyframes enviar-pulo {
+  40% {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* Chave liga/desliga com efeito de mola */
+.interruptor::after {
+  transition: transform var(--medio) var(--ease-mola), width var(--rapido) ease;
+}
+
+.chave:active .interruptor::after {
+  width: 22px;
+}
+
+.chave input:checked:active + .interruptor::after {
+  transform: translateX(16px);
+}
+
+/* Campos */
+.entrada,
+.campo,
+.seletor,
+.chat__entrada {
+  transition:
+    border-color var(--medio) var(--ease-saida),
+    box-shadow var(--medio) var(--ease-saida),
+    background-color var(--medio) var(--ease-saida);
+}
+
+input[type="checkbox"] {
+  transition: transform var(--rapido) var(--ease-mola);
+}
+
+input[type="checkbox"]:active {
+  transform: scale(0.85);
+}
+
+/* =========================================================
+   Cartões interativos (sobem um pouquinho no hover)
+   ========================================================= */
+.opcao,
+.sugestao,
+.agenda__item,
+.estatisticas > li,
+.conquista,
+.conquistas > li,
+.atalhos a,
+.atalhos button,
+.ganhar > li,
+.tema,
+.dia,
+.dia-card,
+.item-loja {
+  transition:
+    transform var(--medio) var(--ease-saida),
+    box-shadow var(--medio) var(--ease-saida),
+    border-color var(--medio) var(--ease-saida),
+    background-color var(--medio) var(--ease-saida);
+}
+
+.opcao:hover:not(:disabled),
+.sugestao:hover,
+.agenda__item:hover,
+.estatisticas > li:hover,
+.conquista:hover,
+.conquistas > li:hover,
+.ganhar > li:hover,
+.tema:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.07);
+}
+
+.atalhos a:hover,
+.atalhos button:hover {
+  transform: translateX(3px);
+}
+
+.opcao__icone,
+.icone-caixa,
+.conquista__icone,
+.estatistica__icone,
+.agenda__icone,
+.plano__icone,
+.ganhar__icone {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+:is(.opcao, .conquistas > li, .conquista, .estatisticas > li, .agenda__item, .ganhar > li):hover
+  :is(.opcao__icone, .icone-caixa, .conquista__icone, .estatistica__icone, .agenda__icone, .ganhar__icone) {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.plano__abrir:hover .plano__icone {
+  transform: scale(1.08) rotate(-6deg);
+}
+
+/* =========================================================
+   Calendário
+   ========================================================= */
+.dia:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.08);
+}
+
+.dia--hoje {
+  animation: hoje-brilho 2.8s ease-in-out infinite;
+}
+
+@keyframes hoje-brilho {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  }
+}
+
+/* Trocar de mês desliza a grade na direção certa */
+.grade--ir-frente > * {
+  animation: grade-frente 0.38s var(--ease-saida) both;
+}
+
+.grade--ir-tras > * {
+  animation: grade-tras 0.38s var(--ease-saida) both;
+}
+
+@keyframes grade-frente {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+}
+
+@keyframes grade-tras {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+}
+
+.calendario__titulo {
+  transition: opacity var(--rapido) ease;
+}
+
+.evento:not(:has(.ponto, .evento__ponto))::before {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.dia:hover .evento::before {
+  transform: scale(1.35);
+}
+
+/* =========================================================
+   Estudar
+   ========================================================= */
+.dia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}
+
+.dia-card:active {
+  transform: scale(0.97);
+}
+
+.dia-card__seta {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.dia-card:hover .dia-card__seta {
+  transform: translate(3px, -3px);
+}
+
+.plano__dias {
+  animation: aparecer 0.3s var(--ease-saida);
+}
+
+.progresso__preenchido,
+.barra__preenchido {
+  transition: width 0.7s var(--ease-saida);
+}
+
+.sessao__tempo {
+  transition: color var(--lento) var(--ease-saida), transform var(--medio) var(--ease-mola);
+}
+
+.sessao.rodando .sessao__tempo {
+  color: var(--primaria);
+}
+
+.sessao.pausa.rodando .sessao__tempo {
+  color: var(--verde);
+}
+
+.sessao__tempo.terminou {
+  animation: tempo-fim 0.9s var(--ease-mola);
+}
+
+@keyframes tempo-fim {
+  30% {
+    transform: scale(1.12);
+  }
+  60% {
+    transform: scale(0.97);
+  }
+}
+
+/* Barrinha de progresso do Pomodoro */
+.sessao__barra {
+  height: 4px;
+  margin: 14px auto 0;
+  width: 70%;
+  border-radius: 999px;
+  background: var(--borda);
+  overflow: hidden;
+}
+
+.sessao__barra > div {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--primaria);
+  transition: width 0.3s linear, background-color var(--lento) ease;
+}
+
+.sessao.pausa .sessao__barra > div {
+  background: var(--verde);
+}
+
+.seletor__ponto {
+  transition: background-color var(--medio) ease;
+}
+
+.sessao.rodando .seletor__ponto {
+  animation: ponto-vivo 1.6s ease-in-out infinite;
+}
+
+@keyframes ponto-vivo {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.45);
+  }
+  60% {
+    box-shadow: 0 0 0 6px rgba(79, 70, 229, 0);
+  }
+}
+
+.metas > li,
+.topicos > li {
+  transition: background-color var(--medio) ease, color var(--medio) ease, border-color var(--medio) ease;
+}
+
+/* =========================================================
+   Mascote
+   ========================================================= */
+/* Idebinha respira devagar */
+.mascote .idebinha,
+.perfil-idebinha__palco .idebinha,
+.provador__palco .idebinha {
+  transform-origin: 50% 95%;
+  animation: respirar 3.6s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.012, 0.988);
+  }
+}
+
+.mascote.carinho .idebinha,
+.mascote--carinho .idebinha {
+  animation: carinho 0.6s var(--ease-mola);
+}
+
+.mascote.carinho,
+.mascote--carinho {
+  animation: none;
+}
+
+@keyframes carinho {
+  0% {
+    transform: none;
+  }
+  30% {
+    transform: translateY(-12px) scale(1.03, 0.97);
+  }
+  55% {
+    transform: translateY(0) scale(0.97, 1.04);
+  }
+  80% {
+    transform: scale(1.01, 0.99);
+  }
+}
+
+/* Só o acessório que acabou de ser vestido ganha animação
+   (antes todos piscavam a cada redesenho e a Idebinha ficava "sem roupa") */
+.idebinha__item--novo {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: item-vestir 0.5s var(--ease-mola);
+}
+
+@keyframes item-vestir {
+  from {
+    transform: scale(0.6) translateY(-6px);
+    opacity: 0.4;
+  }
+}
+
+.coracao {
+  animation: coracao-subir 1s var(--ease-saida) forwards;
+}
+
+@keyframes coracao-subir {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70px) scale(0.9) rotate(12deg);
+  }
+}
+
+.sequencia [data-icone] {
+  animation: chama 1.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+@keyframes chama {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(1.12) rotate(-4deg);
+  }
+}
+
+/* Valor que acabou de mudar (moedas, contagens) dá um pulinho */
+.pulso {
+  display: inline-block;
+  animation: pulso 0.55s var(--ease-mola);
+}
+
+@keyframes pulso {
+  40% {
+    transform: scale(1.22);
+  }
+}
+
+/* =========================================================
+   Loja e conquistas
+   ========================================================= */
+.item-loja__preview .idebinha {
+  transition: transform 0.4s var(--ease-mola);
+  transform-origin: 50% 95%;
+}
+
+.item-loja:hover .item-loja__preview .idebinha {
+  transform: scale(1.06) translateY(-3px);
+}
+
+.categoria [data-icone] {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.categoria:hover [data-icone] {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+/* Botão "Resgatar" brilha chamando atenção */
+.conquista__resgatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.conquista__resgatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: brilho 2.6s ease-in-out infinite;
+}
+
+@keyframes brilho {
+  0%,
+  55% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.conquista--resgatar {
+  animation: borda-viva 2.6s ease-in-out infinite;
+}
+
+@keyframes borda-viva {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px var(--laranja-suave);
+  }
+  50% {
+    box-shadow: 0 0 0 6px var(--laranja-suave);
+  }
+}
+
+.saldo [data-icone],
+.moedas__valor [data-icone] {
+  transition: transform 0.5s var(--ease-mola);
+}
+
+.saldo:hover [data-icone],
+.moedas:hover .moedas__valor [data-icone] {
+  transform: rotate(-20deg) scale(1.1);
+}
+
+/* Confete mais natural: cai balançando */
+.confete > * {
+  animation-name: confete-cair;
+  animation-timing-function: cubic-bezier(0.3, 0.6, 0.6, 1);
+}
+
+@keyframes confete-cair {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(18px, 25vh) rotate(180deg);
+  }
+  50% {
+    transform: translate(-14px, 55vh) rotate(380deg);
+  }
+  75% {
+    transform: translate(12px, 82vh) rotate(560deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-6px, 110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   Assistente
+   ========================================================= */
+.mensagem--nova {
+  animation: mensagem-entrar 0.42s var(--ease-saida) both;
+}
+
+.mensagem--nova.mensagem--usuario {
+  animation-name: mensagem-entrar-dir;
+}
+
+@keyframes mensagem-entrar {
+  from {
+    opacity: 0;
+    transform: translate(-10px, 8px) scale(0.98);
+  }
+}
+
+@keyframes mensagem-entrar-dir {
+  from {
+    opacity: 0;
+    transform: translate(10px, 8px) scale(0.98);
+  }
+}
+
+.chat__mensagens.trocando {
+  animation: aparecer 0.3s var(--ease-saida);
+}
+
+.sugestao [data-icone] {
+  transition: transform var(--medio) var(--ease-mola);
+}
+
+.sugestao:hover [data-icone] {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.anexo {
+  transition: border-color var(--medio) ease, box-shadow var(--medio) ease;
+}
+
+.anexo:hover {
+  border-color: var(--primaria-borda);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+}
+
+/* =========================================================
+   Modais
+   ========================================================= */
+.modal[open] {
+  animation: modal-entrar 0.36s var(--ease-mola);
+}
+
+.modal[open]::backdrop {
+  animation: aparecer 0.3s ease;
+}
+
+.modal.fechando {
+  animation: modal-sair 0.18s var(--ease-entra-sai) forwards;
+}
+
+.modal.fechando::backdrop {
+  animation: fundo-sair 0.18s ease forwards;
+}
+
+@keyframes modal-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+}
+
+@keyframes modal-sair {
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+@keyframes fundo-sair {
+  to {
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   Avisos (toasts)
+   ========================================================= */
+.aviso {
+  animation: aviso-entrar 0.45s var(--ease-mola);
+}
+
+@keyframes aviso-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+}
+
+.aviso--saindo {
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-entra-sai);
+}
+
+/* =========================================================
+   Login
+   ========================================================= */
+.login__logo {
+  animation: logo-entrar 0.7s var(--ease-mola) both;
+}
+
+.login__titulo {
+  animation: surgir 0.6s 0.1s var(--ease-saida) both;
+}
+
+.login__card {
+  animation: surgir 0.6s 0.18s var(--ease-saida) both;
+}
+
+.prefeitura-login {
+  animation: aparecer 0.8s 0.4s ease both;
+}
+
+@keyframes logo-entrar {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-12deg);
+  }
+}
+
+.login__logo svg {
+  animation: capelo 4s 1s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+
+@keyframes capelo {
+  0%,
+  100% {
+    transform: rotate(0) translateY(0);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-3px);
+  }
+}
+
+.login__card.tremer {
+  animation: tremer 0.45s var(--ease-saida);
+}
+
+@keyframes tremer {
+  15%,
+  55% {
+    transform: translateX(-8px);
+  }
+  35%,
+  75% {
+    transform: translateX(8px);
+  }
+  90% {
+    transform: translateX(-2px);
+  }
+}
+
+.login__mensagem:not([hidden]) {
+  animation: surgir 0.3s var(--ease-saida);
+}
+
+/* =========================================================
+   Troca de tema suave
+   ========================================================= */
+:root.trocando-tema,
+:root.trocando-tema *,
+:root.trocando-tema *::before,
+:root.trocando-tema *::after {
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    fill 0.35s ease !important;
+}
+
+/* =========================================================
+   Desligar movimento
+   ========================================================= */
+:root[data-animacoes="reduzidas"]::view-transition-old(root),
+:root[data-animacoes="reduzidas"]::view-transition-new(root) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* O dia de hoje continua brilhando depois da entrada/troca de mês */
+.entrando .grade > .dia--hoje {
+  animation: surgir 0.45s var(--ease-saida) both, hoje-brilho 2.8s 1s ease-in-out infinite;
+}
+
+.grade--ir-frente > .dia--hoje {
+  animation: grade-frente 0.38s var(--ease-saida) both, hoje-brilho 2.8s 0.5s ease-in-out infinite;
+}
+
+.grade--ir-tras > .dia--hoje {
+  animation: grade-tras 0.38s var(--ease-saida) both, hoje-brilho 2.8s 0.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   Gaveta dos planos (Estudar)
+   A altura anima de 0 até o conteúdo com grid-template-rows.
+   ========================================================= */
+.plano__gaveta {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.45s var(--ease-saida),
+    opacity 0.35s var(--ease-saida);
+}
+
+.plano__gaveta-interno {
+  min-height: 0;
+  overflow: hidden;
+  /* espaço para a sombra/elevação dos cards não ser cortada */
+  margin: 0 -6px -6px;
+  padding: 0 6px 6px;
+}
+
+.plano--recolhido .plano__gaveta {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s var(--ease-entra-sai),
+    opacity 0.2s ease;
+}
+
+/* A regra antiga escondia os dias na hora; agora quem esconde é a gaveta */
+.plano--recolhido .plano__dias {
+  display: grid;
+}
+
+.plano__dias {
+  animation: none;
+}
+
+/* Cards dos dias entram em cascata ao abrir */
+.plano--abrindo .plano__dias > * {
+  animation: dia-entrar 0.45s var(--ease-mola) both;
+}
+
+.plano--abrindo .plano__dias > :nth-child(2) { animation-delay: 0.04s; }
+.plano--abrindo .plano__dias > :nth-child(3) { animation-delay: 0.08s; }
+.plano--abrindo .plano__dias > :nth-child(4) { animation-delay: 0.12s; }
+.plano--abrindo .plano__dias > :nth-child(5) { animation-delay: 0.16s; }
+.plano--abrindo .plano__dias > :nth-child(6) { animation-delay: 0.2s; }
+.plano--abrindo .plano__dias > :nth-child(n + 7) { animation-delay: 0.24s; }
+
+@keyframes dia-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+}
+
+/* Setinha que indica aberto/fechado */
+.plano__seta {
+  color: var(--texto-suave);
+  transition: transform 0.4s var(--ease-mola), color var(--medio) ease;
+}
+
+.plano--recolhido .plano__seta {
+  transform: rotate(-90deg);
+}
+
+.plano__abrir:hover .plano__seta {
+  color: var(--primaria);
+}
+
+/* O espaço entre o topo e a barra também muda suave */
+.plano__topo {
+  transition: margin-bottom 0.35s var(--ease-saida);
+}

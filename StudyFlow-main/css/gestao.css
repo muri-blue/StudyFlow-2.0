@@ -1,0 +1,576 @@
+/* =========================================================
+   StudyFlow — gestao.css
+   Telas de gestão: Minhas turmas (professor), Painel da rede
+   (Secretaria) e Cadastro de alunos.
+   ========================================================= */
+
+.gestao {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1180px;
+}
+
+/* Aviso de dados de exemplo */
+.aviso-exemplo {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed #f59e0b;
+  background: var(--laranja-suave);
+  color: #78350f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root[data-tema="escuro"] .aviso-exemplo {
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.aviso-exemplo [data-icone] {
+  display: inline-grid;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Seletor de turma */
+.seletor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.seletor button {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transicao), color var(--transicao), border-color var(--transicao);
+}
+
+.seletor button:hover {
+  border-color: var(--borda-forte);
+}
+
+.seletor button[aria-pressed="true"] {
+  background: var(--primaria);
+  border-color: var(--primaria);
+  color: #fff;
+}
+
+:root[data-tema="escuro"] .seletor button[aria-pressed="true"] {
+  color: #0b1120;
+}
+
+/* Indicadores */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+}
+
+.kpi__rotulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.kpi__valor {
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+.kpi__valor small {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto-3);
+}
+
+.kpi__detalhe {
+  font-size: 13px;
+  color: var(--texto-2);
+}
+
+/* Cartão de seção */
+.secao-gestao {
+  padding: 18px;
+}
+
+.secao-gestao__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.secao-gestao__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.secao-gestao__sub {
+  font-size: 13px;
+  color: var(--texto-3);
+}
+
+/* Tabela */
+.tabela-rola {
+  overflow-x: auto;
+  margin: 0 -18px;
+  padding: 0 18px;
+}
+
+.tabela-gestao {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela-gestao th {
+  text-align: left;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  border-bottom: 1px solid var(--borda);
+  white-space: nowrap;
+}
+
+.tabela-gestao td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--borda);
+  color: var(--texto-2);
+  vertical-align: middle;
+}
+
+.tabela-gestao td:first-child {
+  min-width: 210px;
+}
+
+.tabela-gestao tr:last-child td {
+  border-bottom: 0;
+}
+
+.tabela-gestao td strong {
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.tabela-gestao .numero {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabela-gestao th.numero {
+  text-align: right;
+}
+
+.voce {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tabela-gestao button.link-acao {
+  border: 0;
+  padding: 6px 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  color: var(--primaria);
+  cursor: pointer;
+}
+
+.tabela-gestao small {
+  font-size: 12px;
+  color: var(--texto-3);
+}
+
+.linha-turma td {
+  background: var(--superficie-2);
+  font-size: 13px;
+}
+
+/* Barrinha de progresso */
+.barra-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.barra-mini__trilho {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  overflow: hidden;
+}
+
+.barra-mini__cheio {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--primaria);
+}
+
+.barra-mini span {
+  width: 38px;
+  text-align: right;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Situação do aluno */
+.situacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.situacao--ok {
+  background: var(--verde-suave);
+  color: #065f46;
+}
+
+.situacao--atencao {
+  background: var(--laranja-suave);
+  color: #92400e;
+}
+
+.situacao--nunca {
+  background: var(--vermelho-suave);
+  color: #991b1b;
+}
+
+:root[data-tema="escuro"] .situacao--ok { background: rgba(16, 185, 129, 0.16); color: #6ee7b7; }
+:root[data-tema="escuro"] .situacao--atencao { background: rgba(245, 158, 11, 0.16); color: #fcd34d; }
+:root[data-tema="escuro"] .situacao--nunca { background: rgba(239, 68, 68, 0.16); color: #fca5a5; }
+
+/* Lista de eventos da turma */
+.lista-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-eventos li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-2);
+}
+
+.lista-eventos__data {
+  flex: 0 0 52px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.lista-eventos__data strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  color: var(--texto);
+}
+
+.lista-eventos__data small {
+  font-size: 12px;
+  color: var(--texto-3);
+  text-transform: uppercase;
+}
+
+.lista-eventos__texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lista-eventos__texto strong {
+  font-size: 14px;
+  color: var(--texto);
+}
+
+.lista-eventos__texto span {
+  font-size: 13px;
+  color: var(--texto-2);
+}
+
+.vazio-gestao {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px dashed var(--borda-forte);
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-3);
+}
+
+/* Gráfico de barras simples (Secretaria) */
+.barras {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.barras__linha {
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) 1fr 52px;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.barras__nome {
+  color: var(--texto);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barras__trilho {
+  height: 14px;
+  border-radius: 999px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  overflow: hidden;
+}
+
+.barras__cheio {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--primaria);
+  transition: width 0.6s var(--ease-saida, ease);
+}
+
+.barras__cheio--baixo {
+  background: #f59e0b;
+}
+
+.barras__valor {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.duas-colunas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.nota-lgpd {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--texto-3);
+  line-height: 1.5;
+}
+
+.nota-lgpd [data-icone] {
+  display: inline-grid;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Cadastro em lote */
+.passos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.passo {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  font-size: 14px;
+  color: var(--texto-2);
+  line-height: 1.45;
+}
+
+.passo b {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 14px;
+}
+
+:root[data-tema="escuro"] .passo b {
+  color: #0b1120;
+}
+
+.passo strong {
+  display: block;
+  color: var(--texto);
+}
+
+.zona-arquivo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 16px;
+  border-radius: 16px;
+  border: 2px dashed var(--borda-forte);
+  background: var(--superficie-2);
+  text-align: center;
+  color: var(--texto-2);
+  font-size: 14px;
+  transition: border-color var(--transicao), background var(--transicao);
+}
+
+.zona-arquivo.arrastando {
+  border-color: var(--primaria);
+  background: var(--primaria-suave);
+}
+
+.zona-arquivo strong {
+  color: var(--texto);
+  font-size: 15px;
+}
+
+.zona-arquivo [data-icone] {
+  color: var(--primaria);
+}
+
+.colar {
+  width: 100%;
+  min-height: 120px;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.resumo-importacao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#linhas td:first-child {
+  min-width: 0;
+  width: 56px;
+}
+
+.linha-erro td {
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.erro-celula {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vermelho-forte);
+}
+
+:root[data-tema="escuro"] .erro-celula {
+  color: #fca5a5;
+}
+
+.acoes-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+@media (max-width: 1080px) {
+  .kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .duas-colunas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .passos {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi__valor {
+    font-size: 26px;
+  }
+
+  .barras__linha {
+    grid-template-columns: 1fr 52px;
+  }
+
+  .barras__nome {
+    grid-column: 1 / -1;
+  }
+
+  .secao-gestao {
+    padding: 14px;
+  }
+
+  .tabela-rola {
+    margin: 0 -14px;
+    padding: 0 14px;
+  }
+}

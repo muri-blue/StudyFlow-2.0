@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Configurações</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/mascote.css" />
+    <link rel="stylesheet" href="css/loja.css" />
+    <link rel="stylesheet" href="css/perfil.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app app--sem-lateral">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <a class="voltar" href="perfil.html"><span data-icone="chevronLeft" data-tamanho="16"></span>Meu perfil</a>
+            <h1 class="pagina__titulo">Configurações</h1>
+            <p class="pagina__subtitulo">As mudanças são salvas na hora</p>
+          </div>
+        </header>
+
+        <div class="config">
+          <!-- Aparência -->
+          <section class="cartao config__secao" aria-labelledby="t-aparencia">
+            <h2 id="t-aparencia" class="config__titulo"><span data-icone="sun" data-tamanho="18"></span>Aparência</h2>
+            <p class="config__sub">Escolha como o StudyFlow aparece para você.</p>
+            <div class="temas" role="group" aria-label="Tema">
+              <button type="button" class="tema" data-tema="claro" aria-pressed="false">
+                <span class="tema__mini tema__mini--claro"><i></i><i></i></span>
+                <span class="tema__nome"><span data-icone="sun" data-tamanho="14"></span>Claro</span>
+              </button>
+              <button type="button" class="tema" data-tema="escuro" aria-pressed="false">
+                <span class="tema__mini tema__mini--escuro"><i></i><i></i></span>
+                <span class="tema__nome"><span data-icone="moon" data-tamanho="14"></span>Escuro</span>
+              </button>
+              <button type="button" class="tema" data-tema="auto" aria-pressed="false">
+                <span class="tema__mini tema__mini--auto"><i></i><i></i></span>
+                <span class="tema__nome"><span data-icone="monitor" data-tamanho="14"></span>Automático</span>
+              </button>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Tamanho do texto</strong><span>Deixa letras e botões maiores</span></div>
+              <select id="cfg-texto" class="entrada" aria-label="Tamanho do texto">
+                <option value="normal">Normal</option>
+                <option value="grande">Grande</option>
+              </select>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Reduzir animações</strong><span>Menos movimento na tela</span></div>
+              <label class="chave"><input id="cfg-animacoes" type="checkbox" aria-label="Reduzir animações" /><span class="interruptor"></span></label>
+            </div>
+          </section>
+
+          <!-- Pomodoro -->
+          <section class="cartao config__secao" aria-labelledby="t-pomodoro">
+            <h2 id="t-pomodoro" class="config__titulo"><span data-icone="clock" data-tamanho="18"></span>Sessão de estudo (Pomodoro)</h2>
+            <p class="config__sub">Vale para o cronômetro da tela Estudar.</p>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Tempo de foco</strong><span>Cada sessão completa dá 10 moedas à Idebinha</span></div>
+              <select id="cfg-foco" class="entrada" aria-label="Tempo de foco">
+                <option value="15">15 minutos</option>
+                <option value="20">20 minutos</option>
+                <option value="25">25 minutos</option>
+                <option value="30">30 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="50">50 minutos</option>
+              </select>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Tempo de pausa</strong><span>Descanso entre as sessões</span></div>
+              <select id="cfg-pausa" class="entrada" aria-label="Tempo de pausa">
+                <option value="5">5 minutos</option>
+                <option value="10">10 minutos</option>
+                <option value="15">15 minutos</option>
+              </select>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Som ao terminar</strong><span>Um bipe curto no fim do foco e da pausa</span></div>
+              <label class="chave"><input id="cfg-som" type="checkbox" aria-label="Som ao terminar" /><span class="interruptor"></span></label>
+            </div>
+          </section>
+
+          <!-- Assistente -->
+          <section class="cartao config__secao" aria-labelledby="t-assistente">
+            <h2 id="t-assistente" class="config__titulo"><span data-icone="sparkles" data-tamanho="18"></span>Assistente de IA</h2>
+            <p class="config__sub">Por enquanto o assistente usa respostas de demonstração.</p>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Respostas com IA de verdade</strong><span>Disponível quando o servidor estiver no ar</span></div>
+              <span class="selo-breve">Em breve</span>
+            </div>
+          </section>
+
+          <!-- Lembretes -->
+          <section class="cartao config__secao" aria-labelledby="t-lembretes">
+            <h2 id="t-lembretes" class="config__titulo"><span data-icone="bell" data-tamanho="18"></span>Lembretes</h2>
+            <p class="config__sub">Avisos dos compromissos do dia e do fim do Pomodoro, enquanto o StudyFlow estiver aberto em alguma aba.</p>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Lembretes ligados</strong><span id="lembretes-estado">Resumo do dia e aviso antes de cada evento do calendário</span></div>
+              <label class="chave"><input id="cfg-lembretes" type="checkbox" aria-label="Lembretes ligados" /><span class="interruptor"></span></label>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Avisar antes do evento</strong><span>Para eventos do calendário que têm horário</span></div>
+              <select id="cfg-antecedencia" class="entrada" aria-label="Avisar antes do evento">
+                <option value="10">10 minutos</option>
+                <option value="15">15 minutos</option>
+                <option value="30">30 minutos</option>
+                <option value="60">1 hora</option>
+                <option value="120">2 horas</option>
+              </select>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Avisos fora do site</strong><span id="lembretes-permissao">Notificação do navegador quando o StudyFlow estiver em outra aba</span></div>
+              <button id="btn-permitir" type="button" class="botao-secundario botao-com-icone"><span data-icone="bell" data-tamanho="16"></span><span>Permitir</span></button>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Testar</strong><span>Mostra um lembrete de exemplo</span></div>
+              <button id="btn-testar-lembrete" type="button" class="botao-secundario">Testar</button>
+            </div>
+          </section>
+
+          <!-- Dados -->
+          <section class="cartao config__secao" aria-labelledby="t-dados">
+            <h2 id="t-dados" class="config__titulo"><span data-icone="lock" data-tamanho="18"></span>Privacidade e dados</h2>
+            <p class="config__sub">Hoje seus dados ficam salvos só neste navegador.</p>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Baixar meus dados</strong><span>Um arquivo com seus eventos, planos, metas e a Idebinha</span></div>
+              <button id="btn-exportar" type="button" class="botao-secundario botao-com-icone"><span data-icone="download" data-tamanho="16"></span>Baixar</button>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Apagar meus dados deste navegador</strong><span>Volta tudo ao começo. As configurações ficam.</span></div>
+              <button id="btn-apagar" type="button" class="botao-perigo"><span data-icone="trash" data-tamanho="16"></span>Apagar</button>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Aparecer no ranking</strong><span>Seu primeiro nome e a inicial aparecem no ranking da sua turma. Desligado, você continua vendo o ranking, mas ninguém vê você.</span></div>
+              <label class="chave"><input id="cfg-ranking" type="checkbox" aria-label="Aparecer no ranking" /><span class="interruptor"></span></label>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Termos de Uso</strong><span>As regras do StudyFlow</span></div>
+              <a class="botao-secundario" href="termos.html">Ler</a>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Política de Privacidade</strong><span>Quais dados usamos, para quê e seus direitos</span></div>
+              <a class="botao-secundario" href="privacidade.html">Ler</a>
+            </div>
+          </section>
+
+          <!-- Conta -->
+          <section class="cartao config__secao" aria-labelledby="t-conta">
+            <h2 id="t-conta" class="config__titulo"><span data-icone="user" data-tamanho="18"></span>Conta</h2>
+            <p class="config__sub">Matrícula <strong id="cfg-matricula"></strong></p>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Alterar senha</strong><span>Disponível quando o servidor estiver no ar</span></div>
+              <span class="selo-breve">Em breve</span>
+            </div>
+            <div class="ajuste">
+              <div class="ajuste__texto"><strong>Sair da conta</strong><span>Encerra a sessão neste aparelho</span></div>
+              <button id="btn-sair" type="button" class="botao-secundario botao-com-icone"><span data-icone="logout" data-tamanho="16"></span>Sair</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/configuracoes.js"></script>
+  </body>
+</html>

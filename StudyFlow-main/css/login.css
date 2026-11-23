@@ -1,0 +1,288 @@
+/* =========================================================
+   StudyFlow — login.css (index.html)
+   ========================================================= */
+body {
+  background: var(--fundo);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.faixa-municipio {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primaria), #818cf8, var(--primaria));
+}
+
+.login {
+  flex: 1;
+  width: 100%;
+  max-width: 788px;
+  margin: 0 auto;
+  /* Tudo abaixo cresce/encolhe com a altura da janela (vh), para a tela
+     de login caber inteira em qualquer PC. O tamanho máximo é o da
+     imagem de referência (feita em 1024 px de altura). */
+  padding: clamp(16px, 4vh, 40px) 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ícone do capelo */
+.login__logo {
+  width: clamp(84px, 18vh, 185px);
+  height: clamp(84px, 18vh, 185px);
+  border-radius: clamp(24px, 5vh, 52px);
+  flex-shrink: 0;
+  background: var(--primaria);
+  display: grid;
+  place-items: center;
+}
+
+.login__logo svg {
+  width: 74%;
+  height: 74%;
+}
+
+.login__titulo {
+  margin-top: clamp(8px, 2vh, 20px);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(32px, 5.5vh, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: var(--texto);
+}
+
+:root:not([data-tema="escuro"]) .login__titulo {
+  color: #000;
+}
+
+/* Cartão */
+.login__card {
+  width: 100%;
+  margin-top: clamp(10px, 1.8vh, 18px);
+  padding: clamp(16px, 3vh, 31px) clamp(20px, 4.7vh, 48px) clamp(16px, 2.8vh, 29px);
+  background: var(--superficie);
+  border: 2px solid var(--borda);
+  border-radius: clamp(24px, 3.9vh, 40px);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo {
+  width: 100%;
+  height: clamp(50px, 9.6vh, 98px);
+  padding: 0 16px;
+  border-radius: clamp(16px, 2.7vh, 28px);
+  border: 2px solid var(--borda);
+  background: var(--superficie-2);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(18px, 2.9vh, 30px);
+  color: var(--texto);
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.campo + .sr-only + .campo,
+.campo ~ .campo {
+  margin-top: clamp(10px, 2vh, 20px);
+}
+
+.campo::placeholder {
+  color: var(--texto-suave);
+}
+
+.campo:focus {
+  outline: none;
+  border-color: var(--primaria);
+  box-shadow: 0 0 0 4px var(--primaria-suave);
+}
+
+.campo[aria-invalid="true"],
+.campo.erro {
+  border-color: var(--vermelho);
+}
+
+.login__esqueceu {
+  align-self: flex-start;
+  margin: 6px 0 0 20px;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(14px, 1.8vh, 18px);
+  font-weight: 500;
+  color: var(--primaria);
+}
+
+.login__esqueceu:hover {
+  text-decoration: underline;
+}
+
+.login__mensagem {
+  margin: 14px 20px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--vermelho-suave);
+  color: var(--vermelho-forte);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.login__mensagem.sucesso,
+.login__mensagem[data-tipo="sucesso"] {
+  background: var(--verde-suave);
+  color: var(--verde-forte);
+}
+
+.login__mensagem.info,
+.login__mensagem[data-tipo="info"] {
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.login__botao {
+  align-self: center;
+  width: min(540px, 100%);
+  height: clamp(50px, 9.8vh, 100px);
+  margin-top: clamp(16px, 3.9vh, 40px);
+  border-radius: clamp(16px, 2.9vh, 30px);
+  background: var(--primaria);
+  color: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(22px, 4.1vh, 42px);
+  font-weight: 400;
+  transition: background var(--transicao), transform var(--transicao);
+}
+
+.login__botao:hover:not(:disabled) {
+  background: var(--primaria-hover);
+}
+
+.login__botao:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Rodapé da prefeitura */
+/* Selo: o brasão tem fundo branco, então ele fica numa plaquinha
+   branca arredondada — combina com o tema claro e o escuro. */
+.login__legal {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-3);
+}
+
+.login__legal a {
+  color: var(--texto-3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 12px 4px;
+}
+
+.login__legal a:hover {
+  color: var(--primaria);
+}
+
+.prefeitura-login {
+  margin-top: clamp(12px, 3.5vh, 36px);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 20px 8px 8px;
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  background: var(--superficie);
+  color: var(--texto-3);
+  box-shadow: var(--sombra);
+}
+
+.prefeitura-login img {
+  display: block;
+  width: clamp(40px, 5vh, 52px);
+  height: clamp(48px, 6.2vh, 64px);
+  padding: 5px 7px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-tema="escuro"] .prefeitura-login img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.prefeitura-login div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.prefeitura-login span {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--texto-suave);
+}
+
+.prefeitura-login strong {
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+/* Sem brasão (imagem não carregou): selo só com texto */
+.prefeitura-login:has(img[hidden]) {
+  padding-left: 20px;
+}
+
+/* ---------- Telas menores ---------- */
+@media (max-width: 640px) {
+  .login {
+    padding-top: 48px;
+  }
+
+  .login__logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 34px;
+  }
+
+  .login__logo svg {
+    width: 88px;
+    height: 88px;
+  }
+
+  .login__titulo {
+    font-size: 38px;
+  }
+
+  .login__card {
+    padding: 22px 18px;
+    border-radius: 28px;
+  }
+
+  .campo {
+    height: 64px;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+
+  .login__esqueceu {
+    font-size: 15px;
+    margin-left: 12px;
+  }
+
+  .login__botao {
+    height: 64px;
+    margin-top: 28px;
+    border-radius: 20px;
+    font-size: 28px;
+  }
+}

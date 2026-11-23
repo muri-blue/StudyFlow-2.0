@@ -1,0 +1,299 @@
+/* =========================================================
+   StudyFlow — legal.css
+   Páginas de texto: Termos de Uso, Política de Privacidade
+   e modelo de autorização dos responsáveis.
+   Abertas sem login. Boas para ler no celular e para imprimir.
+   ========================================================= */
+
+body {
+  background: var(--fundo);
+}
+
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.legal__topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.legal__topo img {
+  width: 36px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.legal__topo small {
+  display: block;
+  font-size: 12px;
+  color: var(--texto-3);
+}
+
+.legal__topo strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  color: var(--texto);
+}
+
+.legal__voltar {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primaria);
+  white-space: nowrap;
+  padding: 12px 4px;
+}
+
+.legal__faixa {
+  height: 4px;
+  background: linear-gradient(90deg, #e90304 0 33.3%, #f9cb25 33.3% 66.6%, #e90304 66.6%);
+}
+
+.legal h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 22px 0 6px;
+  color: var(--texto);
+}
+
+.legal__versao {
+  font-size: 13px;
+  color: var(--texto-3);
+  margin: 0 0 18px;
+}
+
+.rascunho {
+  margin: 0 0 24px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #f59e0b;
+  background: var(--laranja-suave);
+  color: #78350f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:root[data-tema="escuro"] .rascunho {
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.resumo-facil {
+  margin: 0 0 28px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--primaria-suave);
+  border: 1px solid var(--primaria-borda);
+}
+
+.resumo-facil h2 {
+  margin-top: 0 !important;
+}
+
+.legal h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  margin: 30px 0 8px;
+  color: var(--texto);
+}
+
+.legal h3 {
+  font-size: 16px;
+  margin: 18px 0 6px;
+  color: var(--texto);
+}
+
+.legal p,
+.legal li {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--texto-2);
+}
+
+.legal p {
+  margin: 0 0 12px;
+}
+
+.legal ul,
+.legal ol {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.legal ul {
+  list-style: disc;
+}
+
+.legal ol {
+  list-style: decimal;
+}
+
+.legal li {
+  margin-bottom: 6px;
+}
+
+.legal a {
+  color: var(--primaria);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 16px;
+  font-size: 15px;
+}
+
+.legal th,
+.legal td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px;
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+  line-height: 1.5;
+}
+
+.legal th {
+  background: var(--superficie-2);
+  color: var(--texto);
+}
+
+.tabela-rola {
+  overflow-x: auto;
+}
+
+/* Trechos que a prefeitura precisa preencher */
+.preencher {
+  padding: 0 4px;
+  border-radius: 4px;
+  background: #fef08a;
+  color: #713f12;
+  font-weight: 600;
+}
+
+.legal__rodape {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+  font-size: 14px;
+  color: var(--texto-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.legal__rodape a {
+  color: var(--primaria);
+}
+
+/* ---------- Formulário para imprimir (autorização) ---------- */
+.linha-preencher {
+  display: inline-block;
+  min-width: 220px;
+  border-bottom: 1px solid var(--texto-3);
+  height: 1.2em;
+  vertical-align: bottom;
+}
+
+.linha-preencher--curta {
+  min-width: 110px;
+}
+
+.campos p {
+  margin-bottom: 18px;
+}
+
+.caixa {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--texto-2);
+  border-radius: 3px;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+.assinatura {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-3);
+}
+
+.assinatura div {
+  border-top: 1px solid var(--texto-2);
+  padding-top: 6px;
+}
+
+.botao-imprimir {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--primaria);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .legal h1 {
+    font-size: 25px;
+  }
+
+  .assinatura {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  :root {
+    --texto: #000;
+    --texto-2: #111;
+    --texto-3: #444;
+    --borda: #999;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .legal {
+    max-width: none;
+    padding: 0;
+  }
+
+  .legal__voltar,
+  .nao-imprimir,
+  .rascunho {
+    display: none !important;
+  }
+
+  .preencher {
+    background: none;
+    color: inherit;
+  }
+
+  .legal p,
+  .legal li {
+    font-size: 12pt;
+  }
+}

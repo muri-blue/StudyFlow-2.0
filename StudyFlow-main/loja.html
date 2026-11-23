@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Loja da Idebinha</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/mascote.css" />
+    <link rel="stylesheet" href="css/loja.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <a class="voltar" href="mascote.html"><span data-icone="chevronLeft" data-tamanho="16"></span>Mascote</a>
+            <h1 class="pagina__titulo">Loja da Idebinha</h1>
+            <p class="pagina__subtitulo">Use suas moedas para deixar a Idebinha do seu jeito</p>
+          </div>
+          <span class="saldo" aria-live="polite">
+            <span data-icone="coins" data-tamanho="18"></span><span id="saldo">0</span> moedas
+          </span>
+        </header>
+
+        <nav id="categorias" class="categorias" aria-label="Categorias da loja"></nav>
+
+        <div class="filtros">
+          <div class="segmentado" role="group" aria-label="Mostrar">
+            <button type="button" class="segmentado__opcao ativo" data-posse="todos" aria-pressed="true">Todos</button>
+            <button type="button" class="segmentado__opcao" data-posse="falta" aria-pressed="false">Não tenho</button>
+            <button type="button" class="segmentado__opcao" data-posse="tenho" aria-pressed="false">Tenho</button>
+          </div>
+          <label class="ordenar">
+            <span>Ordenar</span>
+            <select id="ordem" class="entrada">
+              <option value="preco-asc">Menor preço</option>
+              <option value="preco-desc">Maior preço</option>
+              <option value="raridade">Mais raros</option>
+              <option value="nome">Nome (A–Z)</option>
+            </select>
+          </label>
+        </div>
+
+        <section id="vitrine" class="vitrine" aria-label="Itens à venda"></section>
+      </main>
+
+      <aside class="lateral">
+        <section class="cartao painel provador" aria-labelledby="provador-titulo">
+          <div class="painel__topo-loja">
+            <h2 id="provador-titulo" class="painel__titulo">Provador</h2>
+            <button id="btn-desfazer" type="button" class="link-acao" hidden>Desfazer prova</button>
+          </div>
+          <div id="provador" class="provador__palco"></div>
+          <div id="provador-info" class="provador__info"></div>
+        </section>
+
+        <section class="cartao painel" aria-labelledby="ganhar-titulo">
+          <h2 id="ganhar-titulo" class="painel__titulo">Como ganhar moedas</h2>
+          <ul class="ganhar">
+            <li>
+              <span class="ganhar__icone ganhar__icone--azul" data-icone="clock" data-tamanho="16"></span>
+              <div><strong>Termine um Pomodoro</strong><span>+10 moedas por sessão de foco</span></div>
+              <a href="estudar.html" class="ganhar__ir" aria-label="Ir para Estudar"><span data-icone="chevronRight" data-tamanho="16"></span></a>
+            </li>
+            <li>
+              <span class="ganhar__icone ganhar__icone--ambar" data-icone="trophy" data-tamanho="16"></span>
+              <div><strong>Desbloqueie conquistas</strong><span id="ganhar-conquistas">De 10 a 100 moedas cada</span></div>
+              <a href="conquistas.html" class="ganhar__ir" aria-label="Ir para Conquistas"><span data-icone="chevronRight" data-tamanho="16"></span></a>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <!-- Confirmação de compra -->
+    <dialog id="modal-compra" class="modal" aria-labelledby="compra-titulo">
+      <div class="modal__form">
+        <div class="modal__topo">
+          <h2 id="compra-titulo" class="modal__titulo">Confirmar compra</h2>
+          <button type="button" class="botao-icone" data-fechar aria-label="Fechar"><span data-icone="x" data-tamanho="18"></span></button>
+        </div>
+        <div class="compra">
+          <div id="compra-preview" class="compra__preview"></div>
+          <div class="compra__texto">
+            <strong id="compra-nome"></strong>
+            <span id="compra-raridade"></span>
+            <dl class="compra__contas">
+              <div><dt>Preço</dt><dd id="compra-preco"></dd></div>
+              <div><dt>Suas moedas</dt><dd id="compra-saldo"></dd></div>
+              <div class="compra__depois"><dt>Depois da compra</dt><dd id="compra-depois"></dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="modal__acoes">
+          <button type="button" class="botao-secundario" data-fechar>Cancelar</button>
+          <button id="btn-confirmar" type="button" class="botao-primario">Comprar e vestir</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="confete" class="confete" aria-hidden="true"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/idebinha.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/loja.js"></script>
+  </body>
+</html>

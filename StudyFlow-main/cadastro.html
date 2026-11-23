@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Cadastro de alunos</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/gestao.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app app--sem-lateral">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 class="pagina__titulo">Cadastro de alunos</h1>
+            <p class="pagina__subtitulo">Cadastre turmas inteiras de uma vez, a partir de uma planilha</p>
+          </div>
+        </header>
+
+        <div class="gestao">
+          <p class="aviso-exemplo">
+            <span data-icone="info" data-tamanho="18"></span>
+            <span><strong>Fase de testes.</strong> A conferência da planilha já funciona de verdade. Os alunos salvos ficam só neste navegador; quando o servidor estiver no ar, este mesmo botão cria as contas e as senhas iniciais, que a escola entrega aos alunos.</span>
+          </p>
+
+          <div class="passos">
+            <div class="passo"><b>1</b><div><strong>Baixe o modelo</strong>Planilha com as colunas certas.<br /><button id="btn-modelo" type="button" class="link-acao" style="border:0;background:none;padding:8px 0;font:inherit;font-weight:600;cursor:pointer;color:var(--primaria)">Baixar modelo (.csv)</button></div></div>
+            <div class="passo"><b>2</b><div><strong>Preencha no Excel</strong>Uma linha por aluno: nome completo, matrícula, escola e turma. Salve como <em>CSV</em>.</div></div>
+            <div class="passo"><b>3</b><div><strong>Envie e confira</strong>O StudyFlow aponta os erros linha por linha antes de salvar.</div></div>
+          </div>
+
+          <section class="cartao secao-gestao" aria-labelledby="t-enviar">
+            <div class="secao-gestao__topo">
+              <h2 id="t-enviar" class="secao-gestao__titulo">Enviar planilha</h2>
+            </div>
+            <label id="zona" class="zona-arquivo">
+              <span data-icone="cloudUpload" data-tamanho="34"></span>
+              <strong>Arraste o arquivo aqui ou toque para escolher</strong>
+              <span>CSV (separado por ; ou ,) — no Excel: Arquivo → Salvar como → CSV</span>
+              <input id="arquivo" type="file" accept=".csv,.txt,text/csv,text/plain" hidden />
+            </label>
+            <details style="margin-top:12px">
+              <summary style="cursor:pointer;font-weight:600;color:var(--texto-2);padding:8px 0">Ou cole as linhas aqui</summary>
+              <textarea id="colar" class="entrada colar" placeholder="nome;matricula;escola;turma&#10;Maria da Silva;202600123;EMEB Alzira Ramos de Souza;7º ano A"></textarea>
+              <div class="acoes-linha"><button id="btn-conferir" type="button" class="botao-secundario">Conferir</button></div>
+            </details>
+          </section>
+
+          <section id="resultado" class="cartao secao-gestao" aria-labelledby="t-resultado" hidden>
+            <div class="secao-gestao__topo">
+              <div>
+                <h2 id="t-resultado" class="secao-gestao__titulo">Conferência</h2>
+                <p id="resultado-sub" class="secao-gestao__sub"></p>
+              </div>
+              <div id="resumo" class="resumo-importacao"></div>
+            </div>
+            <div class="tabela-rola">
+              <table class="tabela-gestao">
+                <thead>
+                  <tr><th>Linha</th><th>Nome</th><th>Matrícula</th><th>Escola</th><th>Turma</th><th>Situação</th></tr>
+                </thead>
+                <tbody id="linhas"></tbody>
+              </table>
+            </div>
+            <div class="acoes-linha">
+              <button id="btn-limpar" type="button" class="botao-secundario">Começar de novo</button>
+              <button id="btn-salvar" type="button" class="botao-primario">Salvar</button>
+            </div>
+          </section>
+
+          <section class="cartao secao-gestao" aria-labelledby="t-salvos">
+            <div class="secao-gestao__topo">
+              <div>
+                <h2 id="t-salvos" class="secao-gestao__titulo">Alunos já cadastrados por planilha</h2>
+                <p id="salvos-sub" class="secao-gestao__sub"></p>
+              </div>
+              <button id="btn-apagar-salvos" type="button" class="botao-secundario" hidden>Apagar (teste)</button>
+            </div>
+          </section>
+
+          <p class="nota-lgpd"><span data-icone="shield" data-tamanho="16"></span>Cadastre só o necessário (nome, matrícula, escola e turma). Não inclua CPF, endereço, telefone ou dados de saúde dos alunos.</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>Auth.exigir("secretaria");</script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/rede.js"></script>
+    <script src="js/cadastro.js"></script>
+  </body>
+</html>

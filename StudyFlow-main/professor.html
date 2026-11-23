@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Minhas turmas</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/gestao.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app app--sem-lateral">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 class="pagina__titulo">Minhas turmas</h1>
+            <p id="subtitulo" class="pagina__subtitulo">Acompanhe seus alunos e envie avisos para a turma</p>
+          </div>
+          <div class="pagina__acoes">
+            <button id="btn-evento" type="button" class="botao-primario"><span data-icone="plus" data-tamanho="18"></span>Evento para a turma</button>
+          </div>
+        </header>
+
+        <div class="gestao">
+          <p class="aviso-exemplo" id="aviso-exemplo" hidden>
+            <span data-icone="info" data-tamanho="18"></span>
+            <span><strong>Dados de exemplo.</strong> Os alunos desta tela são fictícios, para demonstração. Só o “Aluno Teste” é real (mostra o que foi feito com a conta <em>aluno</em> neste navegador). Quando o servidor estiver no ar, aparecem os alunos de verdade.</span>
+          </p>
+
+          <div id="seletor" class="seletor" role="group" aria-label="Turma"></div>
+
+          <div id="kpis" class="kpis" aria-live="polite"></div>
+
+          <section class="cartao secao-gestao" aria-labelledby="t-alunos">
+            <div class="secao-gestao__topo">
+              <div>
+                <h2 id="t-alunos" class="secao-gestao__titulo">Alunos</h2>
+                <p class="secao-gestao__sub">Ordenados por quem precisa de mais atenção</p>
+              </div>
+              <div class="seletor" role="group" aria-label="Filtro">
+                <button type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+                <button type="button" data-filtro="atencao" aria-pressed="false">Precisam de atenção</button>
+              </div>
+            </div>
+            <div class="tabela-rola">
+              <table class="tabela-gestao">
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Último acesso</th>
+                    <th class="numero">Sessões de foco</th>
+                    <th>Planos de estudo</th>
+                    <th class="numero">Perguntas</th>
+                    <th>Situação</th>
+                  </tr>
+                </thead>
+                <tbody id="alunos"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="cartao secao-gestao" aria-labelledby="t-eventos">
+            <div class="secao-gestao__topo">
+              <div>
+                <h2 id="t-eventos" class="secao-gestao__titulo">Eventos enviados para a turma</h2>
+                <p class="secao-gestao__sub">Aparecem no calendário de todos os alunos da turma, com lembrete</p>
+              </div>
+            </div>
+            <ul id="eventos" class="lista-eventos"></ul>
+          </section>
+
+          <p class="nota-lgpd"><span data-icone="shield" data-tamanho="16"></span>Você vê só os alunos das suas turmas. Os dados servem para acompanhamento pedagógico e não devem ser compartilhados fora da escola (LGPD).</p>
+        </div>
+      </main>
+    </div>
+
+    <dialog id="modal-evento" class="modal" aria-labelledby="modal-titulo">
+      <form id="form-evento" class="modal__form" method="dialog" novalidate>
+        <div class="modal__topo">
+          <div>
+            <h2 id="modal-titulo" class="modal__titulo">Evento para a turma</h2>
+            <p id="modal-turma" class="modal__sub"></p>
+          </div>
+          <button type="button" class="botao-icone" data-fechar aria-label="Fechar"><span data-icone="x" data-tamanho="18"></span></button>
+        </div>
+        <label class="rotulo">Título
+            <input id="ev-titulo" class="entrada" type="text" maxlength="80" placeholder="Ex.: Prova de Matemática" required /></label>
+        <div class="linha">
+          <label class="rotulo">Data
+            <input id="ev-data" class="entrada" type="date" required /></label>
+          <label class="rotulo">Horário
+            <input id="ev-hora" class="entrada" type="time" value="08:00" /></label>
+        </div>
+        <div class="linha">
+          <label class="rotulo">Matéria
+            <input id="ev-materia" class="entrada" type="text" maxlength="40" placeholder="Ex.: Matemática" /></label>
+          <label class="rotulo">Tipo
+            <select id="ev-tipo" class="entrada">
+              <option value="prova">Prova</option>
+              <option value="trabalho">Trabalho</option>
+              <option value="tarefa">Tarefa</option>
+            </select></label>
+        </div>
+        <p id="ev-erro" class="modal__erro" role="alert" hidden></p>
+        <div class="modal__acoes">
+          <button type="button" class="botao-secundario" data-fechar>Cancelar</button>
+          <button type="submit" class="botao-primario">Enviar para a turma</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="js/auth.js"></script>
+    <script>Auth.exigir("professor");</script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/rede.js"></script>
+    <script src="js/professor.js"></script>
+  </body>
+</html>

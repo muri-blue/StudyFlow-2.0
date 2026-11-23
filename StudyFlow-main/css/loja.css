@@ -1,0 +1,573 @@
+/* =========================================================
+   StudyFlow — loja.css
+   (também usado por conquistas, perfil e configurações)
+   ========================================================= */
+
+/* Saldo de moedas no topo */
+.saldo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--laranja);
+  background: var(--laranja-suave);
+  color: var(--laranja-forte);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.saldo [data-icone] {
+  color: var(--laranja);
+}
+
+.saldo #saldo {
+  font-family: var(--fonte-titulo);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ---------- Categorias ---------- */
+.categorias {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.categorias > button,
+.categorias > a,
+.categoria {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-2);
+  white-space: nowrap;
+  transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+.categorias > button:hover,
+.categoria:hover {
+  border-color: var(--borda-forte);
+}
+
+.categorias > .ativo,
+.categorias > [aria-pressed="true"],
+.categorias > [aria-selected="true"],
+.categoria.ativo {
+  background: var(--primaria);
+  border-color: var(--primaria);
+  color: #fff;
+}
+
+.categoria__qtd,
+.categorias > button small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ---------- Filtros ---------- */
+.filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.segmentado {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 10px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+}
+
+.segmentado__opcao {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-3);
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.segmentado__opcao:hover {
+  color: var(--texto);
+}
+
+.segmentado__opcao.ativo,
+.segmentado__opcao[aria-pressed="true"] {
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.ordenar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.ordenar .entrada {
+  width: auto;
+  height: 36px;
+  min-width: 150px;
+  background-color: var(--superficie);
+  font-size: 13px;
+}
+
+/* ---------- Vitrine ---------- */
+.vitrine {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  gap: 16px;
+}
+
+.vitrine > *,
+.item-loja,
+.produto {
+  --raridade: var(--texto-suave);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+  text-align: left;
+  transition: transform var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.vitrine > *:hover,
+.item-loja:hover,
+.produto:hover {
+  transform: translateY(-2px);
+  border-color: var(--primaria-borda);
+  box-shadow: var(--sombra-m);
+}
+
+.vitrine > .vazio,
+.vitrine__vazio {
+  grid-column: 1 / -1;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--texto-3);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.vitrine > .vazio:hover {
+  transform: none;
+}
+
+/* Prévia do item */
+.item-loja__preview,
+.produto__preview,
+.vitrine > * > :first-child:not(span):not(strong) {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: 12px;
+  background: var(--superficie-2);
+  overflow: hidden;
+}
+
+.item-loja__preview svg,
+.produto__preview svg {
+  width: 82%;
+  height: 82%;
+}
+
+.item-loja__nome,
+.produto__nome,
+.vitrine > * strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+  line-height: 1.3;
+}
+
+.item-loja__rodape,
+.produto__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.item-loja__preco,
+.produto__preco,
+.preco {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--fonte-titulo);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--laranja);
+}
+
+.item-loja__preco--caro,
+.preco--caro,
+.vitrine > .sem-saldo .preco {
+  color: var(--texto-suave);
+}
+
+.item-loja .botao-primario,
+.item-loja .botao-secundario,
+.produto .botao-primario,
+.produto .botao-secundario,
+.vitrine > * .botao-primario,
+.vitrine > * .botao-secundario {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+/* Raridade */
+.raridade {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--superficie);
+  border: 1px solid currentColor;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--raridade);
+}
+
+.raridade--comum,
+[data-raridade="comum"] {
+  --raridade: #64748b;
+}
+
+.raridade--rara,
+.raridade--raro,
+[data-raridade="rara"],
+[data-raridade="raro"] {
+  --raridade: #3b82f6;
+}
+
+.raridade--epica,
+.raridade--epico,
+[data-raridade="epica"],
+[data-raridade="epico"] {
+  --raridade: #8b5cf6;
+}
+
+.raridade--lendaria,
+.raridade--lendario,
+[data-raridade="lendaria"],
+[data-raridade="lendario"] {
+  --raridade: #f59e0b;
+}
+
+/* Estado do item */
+.vitrine > .tenho,
+.item-loja--tenho,
+.produto--tenho {
+  border-color: var(--verde-suave);
+}
+
+.vitrine > .equipado,
+.item-loja--equipado,
+.produto--equipado {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px var(--verde-suave);
+}
+
+.vitrine > .provando,
+.item-loja--provando,
+.produto--provando {
+  border-color: var(--primaria);
+  box-shadow: 0 0 0 3px var(--primaria-suave);
+}
+
+.selo-tenho,
+.item-loja__selo {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--verde-suave);
+  color: var(--verde-forte);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ---------- Provador ---------- */
+.painel__topo-loja {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.provador__palco {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 40%, var(--primaria-suave), var(--superficie-2) 70%);
+  border: 1px solid var(--borda);
+  overflow: hidden;
+}
+
+.provador__palco svg {
+  width: 80%;
+  height: 80%;
+}
+
+.provador__info {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-3);
+}
+
+.provador__info strong {
+  font-size: 14px;
+  color: var(--texto);
+}
+
+.provador__info .botao-primario,
+.provador__info .botao-secundario {
+  width: 100%;
+}
+
+/* ---------- Como ganhar moedas ---------- */
+.ganhar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ganhar > li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 11px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: var(--superficie-2);
+}
+
+.ganhar > li > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.ganhar strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.ganhar > li > div span {
+  font-size: 11px;
+  color: var(--texto-3);
+}
+
+.ganhar__icone {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.ganhar__icone--azul {
+  background: var(--azul-suave);
+  color: var(--azul);
+}
+
+.ganhar__icone--ambar {
+  background: var(--laranja-suave);
+  color: var(--laranja-forte);
+}
+
+.ganhar__ir {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--texto-suave);
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.ganhar__ir:hover {
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+/* ---------- Modal de compra ---------- */
+.compra {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.compra__preview {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  overflow: hidden;
+}
+
+.compra__preview svg {
+  width: 85%;
+  height: 85%;
+}
+
+.compra__texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.compra__texto > strong {
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.compra__texto > span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--raridade, var(--texto-3));
+}
+
+.compra__contas {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.compra__contas > div {
+  display: flex;
+  justify-content: space-between;
+  color: var(--texto-3);
+}
+
+.compra__contas dd {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.compra__depois {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--borda);
+}
+
+.compra__depois dd {
+  color: var(--laranja-forte);
+}
+
+/* ---------- Confete ---------- */
+.confete {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confete > * {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  animation: confete-cair 1.6s ease-in forwards;
+}
+
+@keyframes confete-cair {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.6;
+  }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 640px) {
+  .vitrine {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .compra {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .compra__preview {
+    align-self: center;
+  }
+}
+
+/* ---------- Ajustes para o JS ---------- */
+.item-loja {
+  cursor: pointer;
+}
+
+.item-loja__preview svg {
+  width: 88%;
+  height: 88%;
+}
+
+.categoria.ativo .categoria__qtd {
+  opacity: 0.85;
+}

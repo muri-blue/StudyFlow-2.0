@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Ranking</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/gestao.css" />
+    <link rel="stylesheet" href="css/ranking.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app app--sem-lateral">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 id="titulo" class="pagina__titulo">Ranking da turma</h1>
+            <p id="subtitulo" class="pagina__subtitulo"></p>
+          </div>
+        </header>
+
+        <div class="gestao">
+          <p class="aviso-exemplo" id="aviso-exemplo" hidden>
+            <span data-icone="info" data-tamanho="18"></span>
+            <span><strong>Dados de exemplo.</strong> Os colegas deste ranking são fictícios, para demonstração. Só a conta de teste <em>aluno</em> é real. Quando o servidor estiver no ar, aparecem os colegas de verdade.</span>
+          </p>
+
+          <!-- Só aparece para professor com mais de uma turma -->
+          <div id="seletor" class="seletor" role="group" aria-label="Turma" hidden></div>
+
+          <div id="voce" class="ranking__voce" aria-live="polite"></div>
+
+          <section class="cartao secao-gestao" aria-labelledby="t-podio">
+            <h2 id="t-podio" class="sr-only">Pódio da turma</h2>
+            <div id="podio" class="podio"></div>
+            <ol id="lista" class="ranking__lista"></ol>
+          </section>
+
+          <div class="duas-colunas">
+            <section class="cartao secao-gestao" aria-labelledby="t-pontos">
+              <div class="secao-gestao__topo">
+                <h2 id="t-pontos" class="secao-gestao__titulo">Como ganhar pontos</h2>
+              </div>
+              <ul id="como" class="ranking__como"></ul>
+            </section>
+            <section class="cartao secao-gestao" aria-labelledby="t-regras">
+              <div class="secao-gestao__topo">
+                <h2 id="t-regras" class="secao-gestao__titulo">Regras do ranking</h2>
+              </div>
+              <ul class="ranking__regras">
+                <li>Cada turma tem o seu ranking: você compete só com os colegas da sua turma.</li>
+                <li>Aparece só o primeiro nome e a inicial do sobrenome.</li>
+                <li>Mostramos os 10 primeiros e a sua posição.</li>
+                <li>Não quer aparecer? Desligue em <a href="configuracoes.html">Configurações → Privacidade</a>.</li>
+                <li>Perguntas ao Assistente não dão pontos: o que conta é estudar.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/rede.js"></script>
+    <script src="js/ranking.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1094 @@
+/* =========================================================
+   StudyFlow — app.css
+   Estrutura das telas internas: sidebar, área principal,
+   coluna lateral, cartões, pílulas, botões e modais.
+   ========================================================= */
+
+/* ---------- Grade da aplicação ---------- */
+.app {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 360px;
+  min-height: 100vh;
+}
+
+.app--sem-lateral {
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+/* ---------- Sidebar (montada pelo js/layout.js) ---------- */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 26px 20px 20px;
+  background: var(--superficie);
+  border-right: 1px solid var(--borda);
+  overflow-y: auto;
+}
+
+.sidebar__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--primaria);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.sidebar__nome {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--texto);
+}
+
+.sidebar__sub {
+  display: block;
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1px;
+}
+
+.sidebar__nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+.sidebar__nav a:hover {
+  background: var(--superficie-2);
+  border-color: var(--borda-forte);
+}
+
+.sidebar__nav a.ativo {
+  background: var(--primaria-suave);
+  border-color: var(--primaria-suave);
+  color: var(--primaria);
+  font-weight: 600;
+}
+
+/* Cartão do usuário no rodapé */
+.sidebar__usuario {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 55px;
+  padding: 0 10px 0 0;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--superficie);
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+.sidebar__usuario:hover,
+.sidebar__usuario.ativo {
+  background: var(--superficie-2);
+}
+
+.sidebar__usuario.ativo {
+  border-color: var(--primaria-borda);
+}
+
+.sidebar__perfil {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 10px 11px;
+}
+
+.sidebar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar__usuario-texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.sidebar__usuario-texto strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__usuario-texto small {
+  font-size: 12px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__config {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  color: var(--texto-suave);
+  transition: color var(--transicao), background var(--transicao);
+}
+
+.sidebar__config:hover,
+.sidebar__config[aria-expanded="true"] {
+  color: var(--primaria);
+  background: var(--primaria-suave);
+}
+
+button.sidebar__config {
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Seção "Gestão" (professor e Secretaria) */
+.sidebar__gestao {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: -8px;
+}
+
+.sidebar__gestao small {
+  padding: 0 12px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+.sidebar__gestao a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: var(--texto-2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.sidebar__gestao a:hover {
+  background: var(--superficie-2);
+}
+
+.sidebar__gestao a.ativo {
+  background: var(--primaria-suave);
+  color: var(--primaria);
+  font-weight: 600;
+}
+
+/* No computador a Gestão fica na lateral; no menu da conta só aparece no celular */
+.menu-conta__gestao {
+  display: none !important;
+}
+
+/* Cartão da prefeitura (acima do cartão do usuário) */
+.sidebar__prefeitura {
+  margin-top: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px 12px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--superficie-2);
+  overflow: hidden;
+}
+
+/* Faixa vermelho-amarelo-vermelho do município */
+.sidebar__prefeitura::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(#e90304 0 33.3%, #f9cb25 33.3% 66.6%, #e90304 66.6%);
+}
+
+.sidebar__prefeitura img {
+  width: 30px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.sidebar__prefeitura small {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-3);
+  line-height: 1.3;
+}
+
+.sidebar__prefeitura strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+  line-height: 1.25;
+}
+
+.sidebar__prefeitura + .sidebar__usuario {
+  margin-top: -14px;
+}
+
+/* Menu da engrenagem */
+.sidebar__usuario {
+  position: relative;
+}
+
+.menu-conta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--superficie);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+  animation: menu-conta-entrar 0.16s ease-out;
+}
+
+.menu-conta[hidden] {
+  display: none;
+}
+
+@keyframes menu-conta-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.menu-conta a,
+.menu-conta button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--texto-2);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.menu-conta a:hover,
+.menu-conta button:hover,
+.menu-conta a:focus-visible,
+.menu-conta button:focus-visible {
+  background: var(--superficie-2);
+  color: var(--texto);
+  outline: none;
+}
+
+.menu-conta a:focus-visible,
+.menu-conta button:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--primaria);
+}
+
+.menu-conta [data-icone] {
+  display: inline-grid;
+  color: var(--texto-3);
+}
+
+.menu-conta__rotulo {
+  flex: 1;
+}
+
+/* Interruptor pequeno do modo escuro */
+.menu-conta__chave {
+  position: relative;
+  width: 30px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--borda-forte);
+  transition: background var(--transicao);
+}
+
+.menu-conta__chave::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--transicao);
+}
+
+[aria-checked="true"] > .menu-conta__chave {
+  background: var(--primaria);
+}
+
+[aria-checked="true"] > .menu-conta__chave::after {
+  transform: translateX(12px);
+}
+
+.menu-conta hr {
+  margin: 4px 6px;
+  border: 0;
+  border-top: 1px solid var(--borda);
+}
+
+.menu-conta .menu-conta__sair,
+.menu-conta .menu-conta__sair [data-icone] {
+  color: var(--vermelho-forte);
+}
+
+/* ---------- Área principal ---------- */
+.principal {
+  min-width: 0;
+  padding: 24px 24px 40px;
+}
+
+.pagina__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  min-height: 46px;
+}
+
+.pagina__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.25;
+}
+
+.pagina__subtitulo {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--texto-2);
+}
+
+.pagina__acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primaria);
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Coluna lateral ---------- */
+.lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 20px 40px;
+  border-left: 1px solid var(--borda);
+  background: var(--fundo);
+  min-width: 0;
+}
+
+/* ---------- Cartões ---------- */
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-xg);
+  box-shadow: var(--sombra);
+}
+
+.painel {
+  padding: 16px 16px 16px;
+  border-radius: var(--raio-g);
+}
+
+.painel__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.painel__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.painel > .painel__titulo:first-child {
+  margin-bottom: 14px;
+}
+
+.secao__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.secao__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.secao__titulo--fora,
+.secao__topo--fora {
+  margin: 28px 0 14px;
+}
+
+.secao__topo--fora .secao__titulo {
+  margin: 0;
+}
+
+/* ---------- Pílulas ---------- */
+.pilula {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+button.pilula:hover {
+  background: var(--superficie-2);
+  border-color: var(--borda-forte);
+}
+
+.pilula.ativo,
+.pilula[aria-pressed="true"] {
+  background: var(--primaria-suave);
+  border-color: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.pilula--pequena {
+  height: 26px;
+  padding: 0 8px;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--texto-2);
+}
+
+/* Tag (ex.: "Pomodoro") */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tag--verde,
+.tag.pausa {
+  background: var(--verde-suave);
+  color: var(--verde-forte);
+}
+
+.tag-demo {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px dashed var(--primaria-borda);
+  background: var(--primaria-suave);
+  color: var(--primaria);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: help;
+}
+
+/* ---------- Botões de ícone ---------- */
+.botao-icone {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto-2);
+  transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+.botao-icone:hover:not(:disabled) {
+  background: var(--superficie-2);
+  border-color: var(--borda-forte);
+  color: var(--texto);
+}
+
+.botao-icone--grande {
+  width: 40px;
+  height: 40px;
+}
+
+.botao-icone--pequeno {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.botao-quadrado {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--primaria);
+  color: #fff;
+  box-shadow: var(--sombra-primaria);
+  transition: background var(--transicao);
+}
+
+.botao-quadrado:hover {
+  background: var(--primaria-hover);
+}
+
+.link-acao {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primaria);
+}
+
+.link-acao:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Modais ---------- */
+.modal {
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-xg);
+  background: var(--superficie);
+  color: var(--texto);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+  overflow: auto;
+}
+
+.modal--largo {
+  width: min(720px, calc(100vw - 32px));
+}
+
+.modal::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal[open] {
+  animation: modal-entrar 0.2s ease;
+}
+
+@keyframes modal-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+}
+
+.modal__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.modal__sub {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--texto-3);
+}
+
+.modal__erro {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--vermelho-suave);
+  color: var(--vermelho-forte);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.modal__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ---------- Aceite dos Termos (js/aceite.js) ---------- */
+.aceite {
+  width: min(520px, calc(100vw - 24px));
+}
+
+.aceite__topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aceite__topo img {
+  width: 34px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.aceite__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aceite__lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.aceite__lista [data-icone] {
+  display: inline-grid;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--primaria);
+}
+
+.aceite__links {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-2);
+}
+
+.aceite__links a {
+  color: var(--primaria);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.aceite__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--primaria-borda);
+  background: var(--primaria-suave);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.aceite__check input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--primaria);
+  cursor: pointer;
+}
+
+/* ---------- Avisos (toast) ---------- */
+.avisos {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(440px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+  animation: aviso-entrar 0.25s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+:root[data-tema="escuro"] .aviso {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.aviso--sucesso [data-icone] {
+  color: #34d399;
+}
+
+.aviso--moedas [data-icone] {
+  color: #fbbf24;
+}
+
+.aviso--erro [data-icone] {
+  color: #f87171;
+}
+
+.aviso--saindo {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@keyframes aviso-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1240px) {
+  .app {
+    grid-template-columns: 240px minmax(0, 1fr) 320px;
+  }
+
+  .app--sem-lateral {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1080px) {
+  .app {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .lateral {
+    grid-column: 2;
+    border-left: 0;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .app,
+  .app--sem-lateral {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Barra do topo: logo + avatar com o menu da conta --- */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: 60px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 12px 0 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--borda);
+    overflow: visible;
+  }
+
+  .sidebar__sub,
+  .sidebar__usuario-texto {
+    display: none;
+  }
+
+  .sidebar__usuario {
+    margin-top: 0;
+    min-height: 44px;
+    padding: 0 4px 0 0;
+    border-color: transparent;
+    background: none;
+    position: static;
+  }
+
+  .sidebar__perfil {
+    padding: 6px;
+  }
+
+  .sidebar__config {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* --- Barra de navegação inferior (ao alcance do polegar) --- */
+  .sidebar__nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin: 0;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: var(--superficie);
+    border-top: 1px solid var(--borda);
+    box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06);
+    view-transition-name: navegacao;
+  }
+
+  .sidebar__nav a {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    height: 54px;
+    padding: 0 2px;
+    border: 0;
+    border-radius: 14px;
+    background: none;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--texto-3);
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sidebar__nav a:hover {
+    background: none;
+  }
+
+  .sidebar__nav a.ativo {
+    background: var(--primaria-suave);
+    color: var(--primaria);
+  }
+
+  .rotulo-longo {
+    display: none;
+  }
+
+  /* Espaço para o conteúdo não ficar embaixo da barra */
+  .app {
+    padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Avisos aparecem acima da barra */
+  .avisos {
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* No celular o menu lateral vira barra no topo: o brasão fica só no login */
+  .sidebar__prefeitura {
+    display: none;
+  }
+
+  .sidebar__prefeitura + .sidebar__usuario {
+    margin-top: 0;
+  }
+
+  .sidebar__gestao {
+    display: none;
+  }
+
+  .menu-conta__gestao {
+    display: flex !important;
+  }
+
+  .menu-conta {
+    position: fixed;
+    left: auto;
+    right: 12px;
+    top: 64px;
+    bottom: auto;
+    width: 220px;
+  }
+
+  .principal,
+  .lateral {
+    grid-column: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .pagina__topo {
+    flex-direction: column;
+  }
+
+  .pagina__acoes {
+    justify-content: flex-start;
+  }
+
+  .linha {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Lapidação ---------- */
+/* Barras de rolagem finas e discretas */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--borda-forte) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--borda-forte);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Foco visível também nos cartões clicáveis */
+.item-loja:focus-visible,
+.dia:focus-visible,
+.dia-card:focus-visible,
+.opcao:focus-visible {
+  outline: 2px solid var(--primaria);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+/* Rótulo curto só aparece no celular */
+.rotulo-curto {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .rotulo-curto {
+    display: inline;
+  }
+}

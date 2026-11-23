@@ -1,0 +1,390 @@
+/* =========================================================
+   StudyFlow — base.css
+   Variáveis, reset, tipografia e componentes globais
+   ========================================================= */
+/* Fontes guardadas no próprio projeto (vendor/fontes), sem Google Fonts:
+   funcionam sem internet e não enviam o IP do aluno para terceiros (LGPD).
+   Inter e Outfit, licença SIL OFL 1.1 (arquivos LICENSE na pasta). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../vendor/fontes/inter-latin-wght-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../vendor/fontes/outfit-latin-wght-normal.woff2") format("woff2");
+}
+
+:root {
+  /* Marca */
+  --primaria: #4f46e5;
+  --primaria-hover: #4338ca;
+  --primaria-suave: #eef2ff;
+  --primaria-borda: #c7d2fe;
+
+  /* Superfícies */
+  --fundo: #f8fafc;
+  --superficie: #ffffff;
+  --superficie-2: #f8fafc;
+  --borda: #e2e8f0;
+  --borda-forte: #cbd5e1;
+
+  /* Texto */
+  --texto: #0f172a;
+  --texto-2: #334155;
+  --texto-3: #64748b;
+  --texto-suave: #94a3b8;
+
+  /* Cores de apoio */
+  --vermelho: #ef4444;
+  --vermelho-suave: #fee2e2;
+  --vermelho-forte: #dc2626;
+  --laranja: #f59e0b;
+  --laranja-forte: #d97706;
+  --laranja-suave: #fef3c7;
+  --verde: #10b981;
+  --verde-forte: #059669;
+  --verde-suave: #d1fae5;
+  --azul: #3b82f6;
+  --azul-suave: #dbeafe;
+  --roxo: #8b5cf6;
+  --roxo-suave: #ede9fe;
+  --ciano: #06b6d4;
+  --ciano-suave: #cffafe;
+
+  /* Formas */
+  --raio-p: 8px;
+  --raio: 12px;
+  --raio-g: 16px;
+  --raio-xg: 20px;
+  --sombra: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --sombra-m: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --sombra-primaria: 0 4px 12px rgba(79, 70, 229, 0.25);
+
+  /* Tipografia */
+  --fonte: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-titulo: "Outfit", "Inter", system-ui, sans-serif;
+
+  --transicao: 0.18s ease;
+
+  color-scheme: light;
+}
+
+/* ---------- Tema escuro ---------- */
+:root[data-tema="escuro"],
+:root.tema-escuro,
+:root.escuro {
+  --primaria: #6366f1;
+  --primaria-hover: #818cf8;
+  --primaria-suave: rgba(99, 102, 241, 0.16);
+  --primaria-borda: rgba(129, 140, 248, 0.45);
+
+  --fundo: #0b1120;
+  --superficie: #111827;
+  --superficie-2: #1a2333;
+  --borda: #253044;
+  --borda-forte: #334155;
+
+  --texto: #f1f5f9;
+  --texto-2: #cbd5e1;
+  --texto-3: #94a3b8;
+  --texto-suave: #64748b;
+
+  --vermelho-suave: rgba(239, 68, 68, 0.16);
+  --laranja-suave: rgba(245, 158, 11, 0.16);
+  --verde-suave: rgba(16, 185, 129, 0.16);
+  --azul-suave: rgba(59, 130, 246, 0.16);
+  --roxo-suave: rgba(139, 92, 246, 0.16);
+  --ciano-suave: rgba(6, 182, 212, 0.16);
+
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --sombra-m: 0 4px 12px rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
+}
+
+/* Tamanho de texto grande */
+:root[data-texto="grande"],
+:root.texto-grande {
+  font-size: 112.5%;
+}
+
+/* Reduzir animações */
+:root[data-animacoes="reduzidas"] *,
+:root.sem-animacoes *,
+:root[data-reduzir-animacoes="true"] * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fonte);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--texto);
+  background: var(--fundo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--texto);
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primaria);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primaria-borda);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ícones (inseridos pelo js/icones.js) */
+[data-icone] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+[data-icone] svg {
+  display: block;
+}
+
+/* ---------- Botões globais ---------- */
+.botao-primario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--primaria);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--sombra-primaria);
+  transition: background var(--transicao), transform var(--transicao);
+}
+
+.botao-primario:hover:not(:disabled) {
+  background: var(--primaria-hover);
+}
+
+.botao-primario:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--superficie);
+  color: var(--texto-2);
+  border: 1px solid var(--borda);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+.botao-secundario:hover:not(:disabled) {
+  background: var(--superficie-2);
+  border-color: var(--borda-forte);
+}
+
+.botao-com-icone {
+  gap: 8px;
+}
+
+.botao-perigo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--vermelho-suave);
+  color: var(--vermelho-forte);
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+.botao-perigo:hover {
+  background: var(--vermelho);
+  color: #fff;
+}
+
+/* ---------- Campos globais ---------- */
+.entrada {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-2);
+  color: var(--texto);
+  font-size: 14px;
+  transition: border-color var(--transicao), box-shadow var(--transicao), background var(--transicao);
+}
+
+.entrada::placeholder {
+  color: var(--texto-suave);
+}
+
+.entrada:focus {
+  outline: none;
+  border-color: var(--primaria);
+  background: var(--superficie);
+  box-shadow: 0 0 0 3px var(--primaria-suave);
+}
+
+select.entrada {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 34px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.rotulo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-2);
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.marcar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--texto-2);
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primaria);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Assistente de IA</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/assistente.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body class="pagina-assistente">
+    <div class="app">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 class="pagina__titulo">Assistente de IA</h1>
+            <p class="pagina__subtitulo">Seu tutor pessoal inteligente</p>
+          </div>
+          <span class="tag-demo" title="As respostas são exemplos prontos. A IA de verdade será ligada quando o servidor estiver no ar.">
+            Demonstração · sem IA
+          </span>
+        </header>
+
+        <section class="cartao chat" aria-label="Conversa com o assistente">
+          <div id="mensagens" class="chat__mensagens" role="log" aria-live="polite"></div>
+
+          <form id="form-chat" class="chat__entrada" autocomplete="off">
+            <label class="sr-only" for="pergunta">Sua pergunta</label>
+            <input id="pergunta" type="text" maxlength="500" placeholder="Digite sua pergunta..." />
+            <button id="btn-anexo" type="button" class="chat__anexo" aria-label="Anexar arquivo">
+              <span data-icone="paperclip" data-tamanho="20" data-traco="1.8"></span>
+            </button>
+            <button id="btn-enviar" type="submit" class="chat__enviar" aria-label="Enviar pergunta">
+              <span data-icone="arrowUpRight" data-tamanho="18"></span>
+            </button>
+          </form>
+        </section>
+      </main>
+
+      <aside class="lateral">
+        <section class="cartao painel" aria-labelledby="sugestoes-titulo">
+          <h2 id="sugestoes-titulo" class="painel__titulo">Sugestões Rápidas</h2>
+          <ul class="sugestoes">
+            <li>
+              <button type="button" class="sugestao" data-modelo="Resuma o capítulo sobre ">
+                <span data-icone="fileText" data-tamanho="16"></span>Resumir capítulo
+              </button>
+            </li>
+            <li>
+              <button type="button" class="sugestao" data-modelo="Crie flashcards sobre ">
+                <span data-icone="layers" data-tamanho="16"></span>Criar flashcards
+              </button>
+            </li>
+            <li>
+              <button type="button" class="sugestao" data-modelo="Explique o conceito de ">
+                <span data-icone="help" data-tamanho="16"></span>Explicar conceito
+              </button>
+            </li>
+            <li>
+              <button type="button" class="sugestao" data-modelo="Gere exercícios sobre ">
+                <span data-icone="pencil" data-tamanho="16"></span>Gerar exercícios
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <section class="cartao painel" aria-labelledby="historico-titulo">
+          <div class="painel__topo">
+            <h2 id="historico-titulo" class="painel__titulo">Histórico Recente</h2>
+            <button id="btn-nova" type="button" class="botao-icone botao-icone--pequeno" aria-label="Nova conversa" title="Nova conversa">
+              <span data-icone="plus" data-tamanho="16"></span>
+            </button>
+          </div>
+          <ul id="historico" class="historico"></ul>
+        </section>
+
+        <section class="cartao painel" aria-labelledby="favoritas-titulo">
+          <h2 id="favoritas-titulo" class="painel__titulo">Matérias Favoritas</h2>
+          <div class="favoritas">
+            <button type="button" class="chip" data-materia="Matemática"><span class="chip__ponto" style="background:#4f46e5"></span>Matemática</button>
+            <button type="button" class="chip" data-materia="Física"><span class="chip__ponto" style="background:#f59e0b"></span>Física</button>
+            <button type="button" class="chip" data-materia="Biologia"><span class="chip__ponto" style="background:#10b981"></span>Biologia</button>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <!-- Janela que abre o resumo anexado -->
+    <dialog id="modal-resumo" class="modal modal--largo" aria-labelledby="resumo-titulo">
+      <div class="modal__form">
+        <div class="modal__topo">
+          <h2 id="resumo-titulo" class="modal__titulo"></h2>
+          <button type="button" class="botao-icone" data-fechar aria-label="Fechar"><span data-icone="x" data-tamanho="18"></span></button>
+        </div>
+        <div id="resumo-corpo" class="resumo"></div>
+        <div class="modal__acoes">
+          <button type="button" class="botao-primario" data-fechar>Fechar</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/assistente-respostas.js"></script>
+    <script src="js/assistente.js"></script>
+  </body>
+</html>

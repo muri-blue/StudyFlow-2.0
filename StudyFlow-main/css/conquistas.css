@@ -1,0 +1,312 @@
+/* =========================================================
+   StudyFlow — conquistas.css
+   (também usado pelo perfil)
+   ========================================================= */
+
+/* ---------- Progresso geral ---------- */
+.progresso-geral {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+.progresso-geral__texto {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.progresso-geral__texto strong {
+  font-family: var(--fonte-titulo);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.progresso-geral__texto span {
+  font-size: 12px;
+  color: var(--texto-3);
+}
+
+.progresso-geral .barra__trilho {
+  flex: 1;
+}
+
+.segmentado--conquistas {
+  margin-bottom: 18px;
+}
+
+/* ---------- Lista de conquistas ---------- */
+.lista-conquistas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.lista-conquistas > li,
+.conquista {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-g);
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+  min-width: 0;
+}
+
+.lista-conquistas > li.vazio {
+  grid-column: 1 / -1;
+  justify-content: center;
+  padding: 32px;
+  color: var(--texto-3);
+  font-size: 13px;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+/* Ícone */
+.conquista__icone,
+.lista-conquistas > li > [data-icone]:first-child {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+}
+
+.conquista__icone--laranja,
+.conquista__icone[data-cor="laranja"] {
+  background: var(--laranja-suave);
+  color: var(--laranja);
+}
+
+.conquista__icone--azul,
+.conquista__icone[data-cor="azul"] {
+  background: var(--azul-suave);
+  color: var(--azul);
+}
+
+.conquista__icone--verde,
+.conquista__icone[data-cor="verde"] {
+  background: var(--verde-suave);
+  color: var(--verde);
+}
+
+.conquista__icone--roxo,
+.conquista__icone[data-cor="roxo"] {
+  background: var(--roxo-suave);
+  color: var(--roxo);
+}
+
+.conquista__icone--vermelho,
+.conquista__icone[data-cor="vermelho"] {
+  background: var(--vermelho-suave);
+  color: var(--vermelho);
+}
+
+/* Texto */
+.conquista__texto,
+.conquista__corpo,
+.lista-conquistas > li > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.35;
+}
+
+.conquista__nome,
+.lista-conquistas strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.conquista__descricao,
+.conquista__desc,
+.lista-conquistas p {
+  font-size: 12px;
+  color: var(--texto-3);
+}
+
+.conquista__progresso {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.conquista__progresso .barra__trilho {
+  flex: 1;
+  height: 6px;
+}
+
+.conquista__rodape {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.conquista__premio,
+.conquista__moedas {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--laranja-forte);
+}
+
+.conquista .botao-primario,
+.lista-conquistas .botao-primario,
+.conquista__resgatar {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+/* Estados */
+.conquista--bloqueada,
+.lista-conquistas > li.bloqueada {
+  background: var(--superficie-2);
+  box-shadow: none;
+}
+
+.conquista--bloqueada .conquista__icone,
+.lista-conquistas > li.bloqueada .conquista__icone {
+  background: var(--borda);
+  color: var(--texto-suave);
+  filter: grayscale(1);
+}
+
+.conquista--bloqueada .conquista__nome,
+.lista-conquistas > li.bloqueada strong {
+  color: var(--texto-3);
+}
+
+.conquista--resgatar,
+.conquista--pendente,
+.lista-conquistas > li.resgatar {
+  border-color: var(--laranja);
+  box-shadow: 0 0 0 3px var(--laranja-suave);
+}
+
+.conquista--resgatada .conquista__premio,
+.conquista__ok {
+  color: var(--verde);
+}
+
+.conquista--nova {
+  animation: conquista-brilho 1.2s ease;
+}
+
+@keyframes conquista-brilho {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(79, 70, 229, 0);
+  }
+}
+
+/* ---------- Painel "Quase lá" ---------- */
+#proxima > * + * {
+  margin-top: 10px;
+}
+
+#proxima .conquista,
+#proxima > div {
+  box-shadow: none;
+}
+
+#proxima p {
+  font-size: 13px;
+  color: var(--texto-3);
+}
+
+/* ---------- Dicas ---------- */
+.dicas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: dica;
+}
+
+.dicas li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texto-2);
+  counter-increment: dica;
+}
+
+.dicas li::before {
+  content: counter(dica);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--primaria-suave);
+  color: var(--primaria);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dicas strong {
+  color: var(--texto);
+}
+
+.dicas a {
+  font-weight: 600;
+  color: var(--primaria);
+}
+
+.dicas a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 640px) {
+  .progresso-geral {
+    flex-wrap: wrap;
+  }
+
+  .progresso-geral .barra__trilho {
+    flex-basis: 100%;
+    order: 3;
+  }
+}
+
+/* ---------- Ajustes para o JS ---------- */
+.lista-conquistas--uma {
+  grid-template-columns: 1fr;
+}
+
+.lista-conquistas--uma .conquista {
+  box-shadow: none;
+}
+
+.conquista__icone svg {
+  display: block;
+}

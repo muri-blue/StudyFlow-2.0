@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Calendário</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/calendario.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 id="titulo-pagina" class="pagina__titulo">Calendário</h1>
+            <p id="subtitulo-pagina" class="pagina__subtitulo"></p>
+          </div>
+          <div class="pagina__acoes">
+            <button id="btn-hoje" type="button" class="pilula">
+              <span data-icone="calendar" data-tamanho="16"></span>Hoje
+            </button>
+            <button type="button" class="pilula" data-visao="semana" aria-pressed="false">
+              <span data-icone="calendar" data-tamanho="16"></span>Semana
+            </button>
+            <button type="button" class="pilula" data-visao="mes" aria-pressed="true">
+              <span data-icone="calendarGrid" data-tamanho="16"></span>Mês
+            </button>
+            <button id="btn-novo" type="button" class="botao-primario">
+              <span data-icone="plus" data-tamanho="18"></span>Novo evento
+            </button>
+          </div>
+        </header>
+
+        <section class="cartao calendario" aria-labelledby="titulo-card">
+          <div class="calendario__topo">
+            <div>
+              <h2 id="titulo-card" class="calendario__titulo"></h2>
+              <p id="subtitulo-card" class="calendario__sub">Calendário acadêmico</p>
+            </div>
+            <div class="calendario__nav">
+              <button id="btn-anterior" type="button" class="botao-icone" aria-label="Anterior">
+                <span data-icone="chevronLeft" data-tamanho="18"></span>
+              </button>
+              <button id="btn-proximo" type="button" class="botao-icone" aria-label="Próximo">
+                <span data-icone="chevronRight" data-tamanho="18"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="semana-cab" aria-hidden="true">
+            <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+          </div>
+          <div id="grade" class="grade"></div>
+        </section>
+      </main>
+
+      <aside class="lateral">
+        <section class="cartao agenda" aria-labelledby="agenda-titulo">
+          <div class="agenda__topo">
+            <h2 id="agenda-titulo" class="agenda__titulo">Agenda de hoje</h2>
+            <span class="pilula pilula--pequena">
+              <span data-icone="calendar" data-tamanho="14"></span><span id="agenda-data"></span>
+            </span>
+          </div>
+          <ul id="agenda-lista" class="agenda__lista"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <dialog id="modal-evento" class="modal" aria-labelledby="modal-titulo">
+      <form id="form-evento" class="modal__form" method="dialog" novalidate>
+        <div class="modal__topo">
+          <h2 id="modal-titulo" class="modal__titulo">Novo evento</h2>
+          <button type="button" class="botao-icone" data-fechar aria-label="Fechar">
+            <span data-icone="x" data-tamanho="18"></span>
+          </button>
+        </div>
+
+        <label class="rotulo">
+          Título
+          <input id="ev-titulo" class="entrada" type="text" maxlength="80" placeholder="Ex.: Prova de Matemática" required />
+        </label>
+
+        <div class="linha">
+          <label class="rotulo">
+            Data
+            <input id="ev-data" class="entrada" type="date" required />
+          </label>
+          <label class="rotulo">
+            Horário
+            <input id="ev-hora" class="entrada" type="time" value="08:00" />
+          </label>
+        </div>
+
+        <label class="rotulo">
+          Matéria
+          <input id="ev-materia" class="entrada" type="text" list="lista-materias" maxlength="40" placeholder="Ex.: Matemática" />
+          <datalist id="lista-materias">
+            <option value="Matemática"></option>
+            <option value="Português"></option>
+            <option value="Ciências"></option>
+            <option value="História"></option>
+            <option value="Geografia"></option>
+            <option value="Inglês"></option>
+            <option value="Artes"></option>
+            <option value="Educação Física"></option>
+            <option value="Física"></option>
+            <option value="Química"></option>
+            <option value="Biologia"></option>
+          </datalist>
+        </label>
+
+        <div class="linha">
+          <label class="rotulo">
+            Tipo
+            <select id="ev-tipo" class="entrada">
+              <option value="tarefa">Tarefa</option>
+              <option value="prova">Prova</option>
+              <option value="trabalho">Trabalho</option>
+            </select>
+          </label>
+          <label class="rotulo">
+            Prioridade
+            <select id="ev-prioridade" class="entrada">
+              <option value="alta">Alta</option>
+              <option value="media" selected>Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+          </label>
+        </div>
+
+        <p id="ev-erro" class="modal__erro" role="alert" hidden></p>
+
+        <div class="modal__acoes">
+          <button type="button" class="botao-secundario" data-fechar>Cancelar</button>
+          <button type="submit" class="botao-primario">Salvar evento</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/eventos.js"></script>
+    <script src="js/calendario.js"></script>
+  </body>
+</html>

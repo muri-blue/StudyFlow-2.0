@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyFlow — Mascote</title>
+    <script src="js/tema.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/mascote.css" />
+    <link rel="stylesheet" href="css/animacoes.css" />
+    <link rel="stylesheet" href="css/celular.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar"></aside>
+
+      <main class="principal">
+        <header class="pagina__topo">
+          <div>
+            <h1 class="pagina__titulo">Idebinha</h1>
+            <p id="nivel" class="pagina__subtitulo"></p>
+          </div>
+          <span class="sequencia">
+            <span data-icone="flame" data-tamanho="16"></span><span id="sequencia"></span>
+          </span>
+        </header>
+
+        <section class="cartao mascote-cartao">
+          <div class="mascote-topo">
+            <button id="palco" type="button" class="palco" aria-label="Fazer carinho na Idebinha">
+              <!-- Idebinha: capivara mascote de Santa Rosa do Sul (desenhada por js/idebinha.js) -->
+              <div id="mascote" class="mascote"></div>
+            </button>
+
+            <div class="bem-estar">
+              <h2 class="bem-estar__titulo">Bem-estar da Idebinha</h2>
+              <div class="barra" data-atributo="felicidade">
+                <div class="barra__rotulo"><span>Felicidade</span><span class="barra__valor"></span></div>
+                <div class="barra__trilho"><div class="barra__preenchido barra__preenchido--felicidade"></div></div>
+              </div>
+              <div class="barra" data-atributo="energia">
+                <div class="barra__rotulo"><span>Energia</span><span class="barra__valor"></span></div>
+                <div class="barra__trilho"><div class="barra__preenchido barra__preenchido--energia"></div></div>
+              </div>
+              <div class="barra" data-atributo="sabedoria">
+                <div class="barra__rotulo"><span>Sabedoria</span><span class="barra__valor"></span></div>
+                <div class="barra__trilho"><div class="barra__preenchido barra__preenchido--sabedoria"></div></div>
+              </div>
+              <p id="mensagem-mascote" class="bem-estar__texto"></p>
+            </div>
+          </div>
+
+          <div class="secao__topo">
+            <h2 class="secao__titulo">Conquistas Recentes</h2>
+            <a class="link-loja link-loja--inline" href="conquistas.html">Ver todas</a>
+          </div>
+          <ul id="conquistas-recentes" class="conquistas"></ul>
+        </section>
+      </main>
+
+      <aside class="lateral">
+        <section class="cartao painel moedas">
+          <h2 class="painel__titulo">Moedas</h2>
+          <span class="moedas__valor"><span data-icone="coins" data-tamanho="18"></span><span id="moedas"></span></span>
+        </section>
+
+        <section class="cartao painel">
+          <h2 class="painel__titulo">Skills</h2>
+          <ul class="lista-opcoes">
+            <li>
+              <button type="button" class="opcao" data-skill="alimentar">
+                <span class="opcao__icone opcao__icone--laranja" data-icone="cookie" data-tamanho="16"></span>
+                <span class="opcao__texto"><strong>Alimentar</strong><span>Recupera +20 Energia</span></span>
+                <span class="etiqueta etiqueta--laranja">10 moedas</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="opcao" data-skill="brincar">
+                <span class="opcao__icone opcao__icone--verde" data-icone="gamepad" data-tamanho="16"></span>
+                <span class="opcao__texto"><strong>Brincar</strong><span>Recupera +15 Felicidade</span></span>
+                <span class="etiqueta etiqueta--azul">5 moedas</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="opcao" data-skill="estudar">
+                <span class="opcao__icone opcao__icone--roxo" data-icone="sparkle" data-tamanho="16"></span>
+                <span class="opcao__texto"><strong>Estudar junto</strong><span>Ganha +5 Sabedoria</span></span>
+                <span class="etiqueta etiqueta--verde">Grátis</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <section class="cartao painel">
+          <h2 class="painel__titulo">Vestiário</h2>
+          <ul id="vestiario" class="lista-opcoes lista-opcoes--vestiario"></ul>
+          <a class="link-loja" href="loja.html">
+            <span data-icone="cart" data-tamanho="16"></span>Ir para Loja de Acessórios
+          </a>
+        </section>
+      </aside>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/icones.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/idebinha.js"></script>
+    <script src="js/conquistas.js"></script>
+    <script src="js/lembretes.js"></script>
+    <script src="js/aceite.js"></script>
+    <script src="js/mascote.js"></script>
+  </body>
+</html>
